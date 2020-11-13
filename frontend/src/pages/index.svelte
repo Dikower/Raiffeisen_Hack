@@ -1,8 +1,6 @@
+<!-- routify:options index=1 -->
 <script>
-    import RoutifyIntro from './example/_components/RoutifyIntro.svelte'
-    import { metatags } from '@roxi/routify'
-    metatags.title = 'My Routify app'
-    metatags.description = 'Description coming soon...'
+    import { url } from '@roxi/routify'
 </script>
-
-<RoutifyIntro />
+<p>Page1</p>
+<a href = {$url('../editor')}>переход</a>
