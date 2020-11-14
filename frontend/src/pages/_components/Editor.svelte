@@ -1,6 +1,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital@1&display=swap" rel="stylesheet">
 <script>
+  let search_text = '';
   import Modal_window from "./Modal_window.svelte";
   let modal = false;
   import Card from "./GoodCard.svelte";
@@ -48,10 +49,12 @@
 </style>
 <div class="component">
   <h1>Редактор</h1>
-  <Search/>
+  <Search bind:search_text={search_text}/>
 <div class="goods-container">
   {#each goods as good}
-    <Card good={good} on:click="{() => {chosen_good = good; modal = true;}}"/>
+    {#if search_text === '' || (search_text.length <= good['title'].length && good['title'].slice(0, search_text.length) === search_text) || good['id']===0 }
+    <Card good={good} on:click="{() => {chosen_good = good; modal = true; alert(good['title']+'\w*')}}"/>
+      {/if}
   {/each}
   {#if modal}
   <Modal_window good={chosen_good} bind:modal={modal} on:update={Update_goods}/>
