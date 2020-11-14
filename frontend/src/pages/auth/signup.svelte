@@ -75,7 +75,6 @@
         <Input bind:this={password2} span="Подтверждение пароля" name="password" type="password"/>
       </div>
       <div class="privacy-policy">
-        <Checkbox size="1.5rem" secondaryColor="#282828" primaryColor="#1355FF"></Checkbox>
         <span class="text-login01">Я принимаю <a
             style='text-decoration: underline;'>
                     пользовательское соглашение</a></span>
