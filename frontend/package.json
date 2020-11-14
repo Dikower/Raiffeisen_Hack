@@ -63,5 +63,8 @@
     "blacklist": [
       "/example/modal/basic/4"
     ]
+  },
+  "dependencies": {
+    "svelte-emoji": "^1.0.2"
   }
 }
