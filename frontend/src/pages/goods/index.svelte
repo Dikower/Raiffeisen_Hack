@@ -21,10 +21,10 @@
 
   $: filteredPositions =
     dynamicPositions && searchText
-      ? $positions.filter((p) =>
+      ? dynamicPositions.filter((p) =>
           p.name.toLowerCase().includes(searchText.toLowerCase())
         )
-      : $positions;
+      : dynamicPositions;
 </script>
 
 <style>
