@@ -6,7 +6,7 @@ class User(Model):
     id = fields.IntField(pk=True)
     email = fields.CharField(max_length=128, unique=True)
     hashed_password = fields.CharField(max_length=512)
-    catalog: fields.ForeignKeyRelation['models.Catalog']
+    catalog: fields.ForeignKeyRelation['Catalog']
 
     def __repr__(self):
         return str(self.email)

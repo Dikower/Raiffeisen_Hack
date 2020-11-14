@@ -45,12 +45,21 @@ app.include_router(
     tags=['Tags']
 )
 
+for path in ['db/test', 'db/prod']:
+    Path(path).mkdir(parents=True, exist_ok=True)
+
 
 @app.on_event('startup')
 async def startup():
-    await Tortoise.init(config=TEST_TORTOISE_ORM)
+    await Tortoise.init(config=TEST_TORTOISE_ORM, modules={'models': ['models']})
     await Tortoise.generate_schemas(safe=True)
     await fill_roles()
+
+
+@app.on_event('shutdown')
+async def shutdown():
+    await Tortoise.close_connections()
+
 
 if __name__ == '__main__':
     uvicorn.run('app:app', reload=True, use_colors=True)
