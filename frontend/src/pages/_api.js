@@ -1,7 +1,7 @@
 import { writable, get } from "svelte/store";
 import { setContext } from "svelte";
 
-export const apiUrl = "https://301706e8534b.ngrok.io/";
+export const apiUrl = "https://backend.sbp-kassa.online/";
 export const selfUrl = "/";
 
 export let user = writable("");
@@ -64,7 +64,7 @@ export function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-function deleteCookie(name) {
+export function deleteCookie(name) {
   setCookie(name, "", {
     "max-age": -1,
   });

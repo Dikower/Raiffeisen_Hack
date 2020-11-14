@@ -1,32 +1,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital@1&display=swap" rel="stylesheet">
 <script>
+  import {goto, url} from "@roxi/routify";
+
   let goods = [{'ind': 0, 'id': '', 'emoji': '💡', 'name': '', 'price': '', 'code': '', 'tag': ''}];
-  let api_url = 'https://301706e8534b.ngrok.io/';
-  import { getCookie } from "../_api.js";
+  let api_url = 'https://backend.sbp-kassa.online/';
+  import { getCookie, deleteCookie } from "../_api.js";
   let search_text = '';
   import Modal_window from "./Modal_window.svelte";
   let modal = false;
   import Card from "./GoodCard.svelte";
   import Search from "./Search.svelte"
   let chosen_good;
-  // let goods = [{'ind': 0, 'emoji': '💡', 'name': '', 'price': '', 'code': ''},
-  //   {'ind': 1, 'emoji': '🍕', 'name': 'Пицца', 'price': 123, 'code': '123:32'}, {
-  //   'ind': 2,
-  //   'emoji': '🍦',
-  //   'name': 'Мороженное',
-  //   'price': 50,
-  //   'code':'123:33'
-  // }]
+
   async function Update_goods(event) {
     let obj = event.detail.data;
     if (obj['ind'] === 0) {
       goods.push({'ind': goods.length, 'id': '', 'emoji': obj['emoji'], 'name': obj['name'], 'price': obj['price'], 'code': obj['code'], 'tag': ''});
       const json_response = await Authorised_fetch_sec('positions/create', 'Post',
               {'emoji': obj['emoji'], 'name': obj['name'], 'price': Number(obj['price']), 'code': obj['code'], 'tag': ''});
-      console.log(goods);
       goods[goods.length-1]['id'] = json_response['id'];
-      console.log(goods);
     } else {
       goods[obj['ind']]['emoji'] = obj['emoji'];
       goods[obj['ind']]['name'] = obj['name'];
@@ -78,6 +71,18 @@
     height: 100%;
     font-family: 'Nunito', sans-serif;
   }
+  .logout {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    border-radius: 10px;
+    background: transparent;
+    border: 0;
+    font-weight: bold;
+  }
+  .logout:hover {
+    cursor: pointer;
+  }
   .goods-container {
     margin: auto;
     display: flex;
@@ -87,6 +92,7 @@
   }
 </style>
 <div class="component">
+  <button class="logout" on:click="{() => {deleteCookie('access_token'); $goto($url('../auth/signup'), {}, false);}}">Выйти</button>
   <h1>Редактор</h1>
   <Search bind:search_text={search_text}/>
 <div class="goods-container">
