@@ -7,10 +7,10 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.front.entrypoints=https"
-      - "traefik.http.routers.front.rule=Host(`hostname`)"
+      - "traefik.http.routers.front.rule=Host(`sbp-kassa.online`)"
       - "traefik.http.routers.front.tls=true"
       - "traefik.http.routers.front.tls.certresolver=letsEncrypt"
-      - "traefik.http.middlewares.redirect-to-https.redirectScheme.scheme=https"
+#      - "traefik.http.middlewares.redirect-to-https.redirectScheme.scheme=https"
 
   backend:
     build: "./backend"
@@ -19,10 +19,10 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.backend.entrypoints=https"
-      - "traefik.http.routers.backend.rule=Host(`backend.hostname`)"
+      - "traefik.http.routers.backend.rule=Host(`backend.sbp-kassa.online`)"
       - "traefik.http.routers.backend.tls=true"
       - "traefik.http.routers.backend.tls.certresolver=letsEncrypt"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+#      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
 
   traefik:
     image: traefik:v2.2
@@ -42,7 +42,7 @@ services:
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=https"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.hostname`)"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.sbp-kassa.online`)"
       - "traefik.http.routers.traefik.tls=true"
       - "traefik.http.routers.traefik.tls.certresolver=letsEncrypt"
       - "traefik.http.routers.traefik.service=api@internal"
