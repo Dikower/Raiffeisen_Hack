@@ -3,7 +3,6 @@
   import GoodWideCard from "../_components/GoodWideCard.svelte";
   import Qr from "./_components/QR.svelte";
   import {summa} from '../GooodsStores.js';
-  //   import bg from "../../../assets/images/anal-bg.svg";
 </script>
 
 <style>
