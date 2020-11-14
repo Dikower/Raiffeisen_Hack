@@ -11,7 +11,7 @@
     twitter: 'https://twitter.com',
     vkontakte: 'https://vk.com'
   };
-  let apiUrl = getContext('apiUrl');
+  let apiUrl = 'https://565d79293165.ngrok.io/';
   let form;
   let name;
   let email;

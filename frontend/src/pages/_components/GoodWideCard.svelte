@@ -4,11 +4,11 @@
   import WideCard from "./WideCard.svelte";
   const dispatch = createEventDispatcher();
 
-  export let name = "🍷Кола";
+  export let main = "🍷Кола";
   export let sub = "Арт. 189650141";
-  let id = 123123123;
+  export let id = 123123123;
   export let price = 100;
-  let quantity = 1;
+  export let quantity = 1;
 
   export let editable = false;
 
@@ -89,7 +89,7 @@
 
 <WideCard on:click={onClick}>
   <div>
-    <div class="main" onclick>{name}</div>
+    <div class="main" onclick>{main}</div>
     <div class="sub">{sub}</div>
   </div>
   <div>

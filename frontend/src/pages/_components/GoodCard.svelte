@@ -4,9 +4,9 @@
   const dispatch = createEventDispatcher();
   export let thumbnail =
     "https://cdn.shopify.com/s/files/1/2848/4722/products/30f454700daacf066bd7cb2b476eab58_600x.jpg?v=1519595291";
-  export let good = {};
+  export let good;
   function handleClick() {
-    dispatch("click", good['id']);
+    dispatch("click", good['ind']);
   }
 </script>
 
@@ -44,12 +44,12 @@
   <meta charset="UTF-8">
 </svelte:head>
 <div class="good-card" on:click={handleClick} transition:fade>
-  {#if good['id'] === 0}
+  {#if good['ind'] === 0}
     <img src="/images/plus.svg" class="new_good_svg" alt="new_good">
     {:else}
     <p class="emoji_box">{good['emoji']}</p>
   <div class="info">
-    <div class="title">{good['title']}</div>
+    <div class="title">{good['name']}</div>
     <div class="price">{good['price']}₽</div>
   </div>
   {/if}
