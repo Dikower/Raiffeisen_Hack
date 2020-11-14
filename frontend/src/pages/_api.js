@@ -169,7 +169,7 @@ export function getAllPositions() {
  * @returns {Promise<{positions:[]}>}
  */
 export function getAllCashierPositions() {
-  return fetch(apiUrl + `catalogs/${get(entryCode)}/catalog`, {
+  return fetch(apiUrl + `catalogs/${get(entryCode)}`, {
     method: "GET",
     headers: new Headers({
       Accept: "application/json",
