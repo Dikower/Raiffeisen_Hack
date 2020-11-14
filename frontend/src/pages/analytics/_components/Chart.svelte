@@ -25,11 +25,18 @@
 
 <style>
   .chart {
-    /* height: 260px; */
     height: 60vh;
     padding: 3em 2em 2em 2em;
-    /* margin: 0 0 36px 0; */
-    /* overflow: hidden; */
+    /* width: 70vw; */
+    margin: auto;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .chart {
+      height: 30vh;
+      width: 95vw;
+      padding-right: 10px;
+    }
   }
 
   input {
