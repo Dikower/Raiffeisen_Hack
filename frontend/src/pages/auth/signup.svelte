@@ -48,7 +48,7 @@
       errorMessage = error;
       return;
     }
-    $goto(selfUrl, {}, false);
+    $goto("/editor", {}, false);
   }
 </script>
 
