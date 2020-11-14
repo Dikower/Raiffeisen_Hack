@@ -1,6 +1,7 @@
 <script>
   import GoodsPosition from './_components/GoodsPosition.svelte'
-  import {summa} from './_components/stores.js';
+  //import {summa} from './_components/stores.js';
+  import {summa} from '../GooodsStores.js';
   let positions = [
     { name: "Кола", info: "189650141", price: 20},
     { name: "Картошка", info: "102389011", price: 48},
