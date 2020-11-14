@@ -8,9 +8,9 @@ from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 from tortoise import Tortoise
 from starlette.middleware.cors import CORSMiddleware
-from logic import users, projects, tags
+from logic import users, catalogs, tags
 from settings import PROD_TORTOISE_ORM, TEST_TORTOISE_ORM
-from fill_db import fill_tags
+from fill_db import fill_roles
 
 
 app = FastAPI(
@@ -34,9 +34,9 @@ app.include_router(
 )
 
 app.include_router(
-    projects.router,
-    prefix='/projects',
-    tags=['Projects']
+    catalogs.router,
+    prefix='/catalogs',
+    tags=['Catalogs']
 )
 
 app.include_router(
@@ -46,20 +46,11 @@ app.include_router(
 )
 
 
-# config_var = TEST_TORTOISE_ORM
-config_var = PROD_TORTOISE_ORM
-
-shutil.rmtree('db/test')  # Удаляем папку с тестовой базой данных при запуске и импорте
-for path in ['db/test', 'db/prod']:
-    Path(path).mkdir(parents=True, exist_ok=True)
-
-
 @app.on_event('startup')
 async def startup():
-    await Tortoise.init(config=config_var)
+    await Tortoise.init(config=TEST_TORTOISE_ORM)
     await Tortoise.generate_schemas(safe=True)
-    await fill_tags()
-
+    await fill_roles()
 
 if __name__ == '__main__':
     uvicorn.run('app:app', reload=True, use_colors=True)
