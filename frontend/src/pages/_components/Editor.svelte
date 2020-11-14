@@ -1,16 +1,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital@1&display=swap" rel="stylesheet">
 <script>
+  import { apiUrl, getCookie, deleteCookie } from "../_api.js";
   import {goto, url} from "@roxi/routify";
-
-  let goods = [{'ind': 0, 'id': '', 'emoji': '💡', 'name': '', 'price': '', 'code': '', 'tag': ''}];
-  let api_url = 'https://backend.sbp-kassa.online/';
-  import { getCookie, deleteCookie } from "../_api.js";
-  let search_text = '';
-  import Modal_window from "./Modal_window.svelte";
-  let modal = false;
   import Card from "./GoodCard.svelte";
   import Search from "./Search.svelte"
+  import Modal_window from "./Modal_window.svelte";
+  let goods = [{'ind': 0, 'id': '', 'emoji': '💡', 'name': '', 'price': '', 'code': '', 'tag': ''}];
+  let api_url = 'https://backend.sbp-kassa.online/';
+  let search_text = '';
+  let modal = false;
   let chosen_good;
 
   async function Update_goods(event) {
@@ -41,7 +40,7 @@
     console.log(goods);
   });
   async function Authorised_fetch_sec(path, method, obj) {
-   return await fetch(api_url + path, {
+   return await fetch(apiUrl + path, {
       method: method,
       headers: new Headers({
         'Accept': 'application/json',
@@ -51,7 +50,7 @@
     }).then(res => res.json());
   }
   async function Authorised_fetch_get(path) {
-   return await fetch(api_url + path, {
+   return await fetch(apiUrl + path, {
       method: 'Get',
       headers: new Headers({
         'Accept': 'application/json',
