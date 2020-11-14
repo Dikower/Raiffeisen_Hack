@@ -27,9 +27,9 @@
 <style>
   .chart {
     /* height: 260px; */
-    height: 50vh;
-    padding: 3em 2em 0 2em;
-    margin: 0 0 36px 0;
+    height: 60vh;
+    padding: 3em 2em 2em 2em;
+    /* margin: 0 0 36px 0; */
     /* overflow: hidden; */
   }
 

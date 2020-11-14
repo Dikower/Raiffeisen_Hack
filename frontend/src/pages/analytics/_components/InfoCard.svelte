@@ -1,4 +1,6 @@
 <script>
+  import WideCard from "../../_components/WideCard.svelte";
+
   export let main = "Нету";
   export let sub = "Нету";
   export let type = "percent"; // increase
@@ -38,17 +40,6 @@
 </script>
 
 <style>
-  .card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #ffffff;
-    box-shadow: 0px 0px 14px rgba(219, 219, 219, 0.25);
-    border-radius: 10px;
-    margin-bottom: 19px;
-    padding: 11px;
-  }
-
   .increase {
     width: 46px;
     height: 46px;
@@ -80,7 +71,7 @@
   }
 </style>
 
-<div class="card">
+<WideCard>
   <div>
     <div class="main">{main}</div>
     <div class="sub">{sub}</div>
@@ -106,4 +97,4 @@
       <!-- else content here -->
     {/if}
   </div>
-</div>
+</WideCard>

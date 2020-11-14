@@ -1,5 +1,5 @@
 <script>
-  import BottomContainer from "./_components/BottomContainer.svelte";
+  import BottomContainer from "../_components/BottomContainer.svelte";
 
   import Chart from "./_components/Chart.svelte";
   import InfoBar from "./_components/InfoBar.svelte";
@@ -28,6 +28,21 @@
       sub="Посмотрите количество прибыли за год"
       type="percent"
       value={75} />
+    <InfoCard
+      main="Новые заказы"
+      sub="Посмотрите количество новых заказов за год"
+      type="increase"
+      value={140} />
+    <InfoCard
+      main="Новые заказы"
+      sub="Посмотрите количество новых заказов за год"
+      type="increase"
+      value={140} />
+    <InfoCard
+      main="Новые заказы"
+      sub="Посмотрите количество новых заказов за год"
+      type="increase"
+      value={140} />
     <InfoCard
       main="Новые заказы"
       sub="Посмотрите количество новых заказов за год"

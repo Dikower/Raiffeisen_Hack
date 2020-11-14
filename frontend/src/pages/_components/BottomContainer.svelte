@@ -1,6 +1,7 @@
 <style>
   .bottom-container {
     background: #f8f8f8;
+    min-height: 40vh;
     border-radius: 20px 20px 0px 0px;
     padding: 21px 19px;
   }
