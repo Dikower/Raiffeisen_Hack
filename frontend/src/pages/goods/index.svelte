@@ -4,18 +4,27 @@
   import { summa } from "../GooodsStores.js";
   import { positions } from "../GooodsStores.js";
   import Search from "../_components/Search.svelte";
+  import { onMount } from "svelte";
+  import { getAllPositions } from "../_api";
 
   let searchText = "";
+
+  let dynamicPositions = null;
+
+  onMount(async () => {
+    dynamicPositions = await getAllPositions();
+  });
 
   function GoToPay() {
     $goto("../pay");
   }
 
-  $: filteredPositions = searchText
-    ? $positions.filter((p) =>
-        p.name.toLowerCase().includes(searchText.toLowerCase())
-      )
-    : $positions;
+  $: filteredPositions =
+    dynamicPositions && searchText
+      ? $positions.filter((p) =>
+          p.name.toLowerCase().includes(searchText.toLowerCase())
+        )
+      : $positions;
 </script>
 
 <style>
@@ -117,14 +126,21 @@
   </div>
 
   <div class="Body">
-    {#each filteredPositions as { name, info, price }}
-      <GoodsPosition {name} {info} {price} />
-    {/each}
-  </div>
-
-  <div class="ToPay">
-    <button on:click={GoToPay} disabled={$summa === 0}>
-      <img src="/images/GoToPayGoods.svg" alt="Оформить заказ" />
-    </button>
+    {#if dynamicPositions === null}
+      <!-- content here -->
+      loading
+    {:else if Array.isArray(dynamicPositions)}
+      {#each filteredPositions as { name, info, price }}
+        <GoodsPosition {name} {info} {price} />
+      {/each}
+      <div class="ToPay">
+        <button on:click={GoToPay} disabled={$summa === 0}>
+          <img src="/images/GoToPayGoods.svg" alt="Оформить заказ" />
+        </button>
+      </div>
+    {:else}
+      <!-- else content here -->
+      no positions
+    {/if}
   </div>
 </main>

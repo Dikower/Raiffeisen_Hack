@@ -4,7 +4,8 @@ import { setContext } from "svelte";
 export const apiUrl = "https://backend.sbp-kassa.online/";
 export const selfUrl = "/";
 
-export let user = writable("");
+export let accessToken = writable("");
+accessToken.set(getCookie("access_token"));
 
 export async function sendForm(login, username, password) {
   let json_response = await fetch(
@@ -25,7 +26,7 @@ export async function sendForm(login, username, password) {
       : "Такая почта уже используется";
   }
   let { access_token, token_type } = json_response;
-  user.set(access_token);
+  accessToken.set(access_token);
   setCookie("access_token", access_token, { samesite: "lax" });
 }
 
@@ -64,17 +65,17 @@ export function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-export function deleteCookie(name) {
+function deleteCookie(name) {
   setCookie(name, "", {
     "max-age": -1,
   });
 }
 
-export function checkStoreAndCoockie() {
-  if (get(user) === "") {
-    let coockie_token = getCookie("access_token");
-    if (coockie_token) {
-      user.set(coockie_token);
+export function checkStoreAndCookie() {
+  if (get(accessToken) === "") {
+    let access_token = getCookie("access_token");
+    if (access_token) {
+      accessToken.set(access_token);
     } else {
       return false;
     }
@@ -83,14 +84,14 @@ export function checkStoreAndCoockie() {
 }
 
 export async function authorizedRequest(apiPart, method, object) {
-  if (!checkStoreAndCoockie()) {
+  if (!checkStoreAndCookie()) {
     return [null, "Unauthorized"];
   }
   let json_response = await fetch(apiUrl + apiPart, {
     method: method,
     headers: new Headers({
       Accept: "application/json",
-      Authorization: "Bearer " + get(user),
+      Authorization: "Bearer " + get(accessToken),
     }),
     body: JSON.stringify(object),
   }).then((res) => res.json());
@@ -103,7 +104,7 @@ export async function authorizedRequest(apiPart, method, object) {
 }
 
 export function clearStoreAndCookie() {
-  user = "";
+  accessToken = "";
   deleteCookie("access_token");
 }
 
@@ -135,7 +136,7 @@ export async function getQrCodeSrc(sum, info) {
     method: "POST",
     headers: new Headers({
       Accept: "application/json",
-      Authorization: "Bearer " + get(user),
+      Authorization: "Bearer " + get(accessToken),
     }),
     body: JSON.stringify({
       sum,
@@ -144,4 +145,15 @@ export async function getQrCodeSrc(sum, info) {
   }).then((res) => res.json());
 
   return json_response.qrUrl;
+}
+
+export async function getAllPositions() {
+  // debugger;
+  return await fetch(apiUrl + "positions/all", {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      Authorization: "Bearer " + get(accessToken),
+    },
+  }).then((res) => res.json());
 }
