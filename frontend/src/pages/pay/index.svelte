@@ -24,7 +24,7 @@
 <div class="pay">
   <div class="pay-info">
     <h2>Сумма покупки</h2>
-    <h1>{$summa}</h1>
+    <h1>{$summa}₽</h1>
 
     <Qr />
   </div>

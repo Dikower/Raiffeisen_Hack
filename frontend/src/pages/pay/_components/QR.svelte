@@ -5,8 +5,6 @@
 
 <style>
   div {
-    width: 190px;
-    height: 190px;
     background-color: white;
     border-radius: 20px;
     padding: 10px;
@@ -14,7 +12,9 @@
   }
   img {
     max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    display: block;
+    width: 151px;
   }
 </style>
 
