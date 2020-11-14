@@ -1,6 +1,5 @@
 <script>
   import * as Pancake from "@sveltejs/pancake";
-  import Analytics from "../../analytics.svelte";
   let data = {
     name: "profit",
     data: [

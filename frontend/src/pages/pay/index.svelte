@@ -1,7 +1,7 @@
 <script>
   import BottomContainer from "../_components/BottomContainer.svelte";
 
-  import GoodWideCard from "./_components/GoodWideCard.svelte";
+  import GoodWideCard from "../_components/GoodWideCard.svelte";
   import Qr from "./_components/QR.svelte";
 
   //   import bg from "../../../assets/images/anal-bg.svg";

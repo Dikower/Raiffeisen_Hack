@@ -1,5 +1,4 @@
 <script>
-  import Emoji from 'svelte-emoji'
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   export let thumbnail =
