@@ -3,6 +3,7 @@
   import GoodWideCard from "../_components/GoodWideCard.svelte";
   import Qr from "./_components/QR.svelte";
   import {summa} from '../GooodsStores.js';
+  import {positions} from '../GooodsStores.js';
 </script>
 
 <style>
@@ -29,13 +30,10 @@
     <Qr />
   </div>
   <BottomContainer>
-    <GoodWideCard />
-    <GoodWideCard />
-    <GoodWideCard />
-    <GoodWideCard />
-    <GoodWideCard />
-    <GoodWideCard />
-    <GoodWideCard />
-    <GoodWideCard />
+    <div class = "Body">
+      {#each $positions as {name,info,price}}
+        <GoodWideCard {name} {info} {price}/>
+      {/each}
+    </div>
   </BottomContainer>
 </div>
