@@ -33,6 +33,9 @@ class Position(Model):
 
     catalog: fields.ManyToManyRelation['Catalog']
 
+    class PydanticMeta:
+        exclude = ['historys']
+
 
 class History(Model):
     id = fields.IntField(pk=True)
