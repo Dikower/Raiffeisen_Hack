@@ -27,10 +27,6 @@
           p.name.toLowerCase().includes(searchText.toLowerCase())
         )
       : dynamicPositions;
-
-  $: {
-    console.log({ filteredPositions });
-  }
 </script>
 
 <style>
