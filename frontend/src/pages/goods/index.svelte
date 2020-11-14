@@ -106,11 +106,7 @@
     position: fixed;
     bottom:0px;
   }
-  .ToPay form{
-    width: 100%;
-    height: 100%;
-  }
-  .ToPay form button{
+  .ToPay button{
     background-image: url(/images/GoToPayGoods.svg);
     background-size: 100% 100%;
     border: 0;
