@@ -5,22 +5,22 @@
 	const dispatch = createEventDispatcher();
     export let modal = true;
     export let good;
-    let new_data = {'id': good['id'], 'emoji': '', 'title': good['title'], 'price': good['price'], 'art': good['price']};
+    let new_data = {'ind': good['ind'], 'id': good['id'], 'emoji': '', 'name': good['name'], 'price': good['price'], 'code': good['price']};
     let heading = 'Изменить товар';
-    let title_placeholder = '';
+    let name_placeholder = '';
     let price_placeholder = '';
-    let art_placeholder = '';
+    let code_placeholder = '';
     onMount(() => {
-     if (good['id'] === 0) {
-         title_placeholder = 'Название';
+     if (good['ind'] === 0) {
+         name_placeholder = 'Название';
          price_placeholder = 'Цена';
-         art_placeholder = 'Артикул';
+         code_placeholder = 'Артикул';
          heading = 'Новая позиция'
      }
     });
 function Update() {
 let emoji;
-switch (new_data['title']) {
+switch (new_data['name']) {
 case 'Пицца':
     emoji = '🍕';
     break;
@@ -48,7 +48,7 @@ case 'Лапша':
 default:
     emoji = '📦';
 }
-dispatch('update', {'data': {'id': new_data['id'], 'emoji': emoji, 'title': new_data['title'], 'price': new_data['price'], 'art': new_data['art']}});
+dispatch('update', {'data': {'ind': new_data['ind'], 'id': new_data['id'], 'emoji': emoji, 'name': new_data['name'], 'price': new_data['price'], 'code': new_data['code']}});
 modal = false;
 }
 </script>
@@ -57,13 +57,13 @@ modal = false;
         <img src="/images/cross.svg" on:click={() => modal = false} class="close">
         <h1>{heading}</h1>
         <p class="emoji_box">{good['emoji']}</p>
-        <input placeholder={title_placeholder} bind:value={new_data['title']}>
+        <input placeholder={name_placeholder} bind:value={new_data['name']}>
         <div class="small_input">
         <input placeholder={price_placeholder} bind:value={new_data['price']}>
             <img src="/images/Ruble.svg" alt="ruble" class="ruble_svg">
         </div>
         <div class="small_input">
-        <input placeholder={art_placeholder} bind:value={new_data['art']}>
+        <input placeholder={code_placeholder} bind:value={new_data['code']}>
         </div>
         <button class="submit_button" on:click={Update}>Готово</button>
     </div>

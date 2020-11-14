@@ -5,8 +5,6 @@
 
 <style>
   div {
-    width: 190px;
-    height: 190px;
     background-color: white;
     border-radius: 20px;
     padding: 10px;
@@ -14,8 +12,14 @@
   }
   img {
     max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    display: block;
+    width: 151px;
   }
 </style>
 
-<div><img src={qrLink} alt="QR-код для оплаты" /></div>
+<div>
+  <img
+    src={qrLink || 'https://media1.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif'}
+    alt="QR-код для оплаты" />
+</div>
