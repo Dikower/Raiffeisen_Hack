@@ -1,6 +1,5 @@
 <script>
-  // import { summa } from "./stores";
-  import {summa} from '../../GooodsStores.js';
+  import { summa } from "../../GooodsStores.js";
   export let name = "Name";
   export let info = "Info";
   export let price = 0;
@@ -15,7 +14,7 @@
       summa.update((n) => n - price);
       quantity--;
     } else {
-      alert("Problem");
+      // alert("Problem");
     }
   }
 </script>
