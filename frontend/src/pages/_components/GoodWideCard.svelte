@@ -1,10 +1,23 @@
 <script>
-  import WideCard from "../../_components/WideCard.svelte";
+  import { createEventDispatcher } from "svelte";
+
+  import WideCard from "./WideCard.svelte";
+  const dispatch = createEventDispatcher();
 
   export let main = "🍷Кола";
   export let sub = "Арт. 189650141";
+  export let id = 123123123;
   export let price = 100;
   export let quantity = 1;
+
+  export let editable = false;
+
+  const onInc = () => dispatch("increase", id);
+  const onDec = () => dispatch("decrease", id);
+  const onClick = () => {
+    console.log("clicked");
+    dispatch("click", id);
+  };
 </script>
 
 <style>
@@ -36,13 +49,16 @@
   }
 </style>
 
-<WideCard>
+<WideCard on:click={onClick}>
   <div>
-    <div class="main">{main}</div>
+    <div class="main" onclick>{main}</div>
     <div class="sub">{sub}</div>
   </div>
   <div>
     <div class="price">{price} <span>₽</span></div>
+    {#if editable}
+       div.button.decreas
+    {/if}
     <div class="quantity">{quantity} <span>шт</span></div>
   </div>
 </WideCard>

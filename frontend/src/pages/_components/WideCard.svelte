@@ -11,7 +11,7 @@
   }
 </style>
 
-<div class="wide-card">
+<div class="wide-card" on:click>
   <slot>
     <!-- optional fallback -->
   </slot>
