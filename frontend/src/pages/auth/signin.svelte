@@ -10,9 +10,6 @@
   let password;
   let errorMessage = null;
   let socialNetworks = {
-    facebook: 'https://facebook.com',
-    twitter: 'https://twitter.com',
-    vkontakte: 'https://vk.com'
   };
   $: showError = !!errorMessage;
 
