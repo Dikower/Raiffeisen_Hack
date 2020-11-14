@@ -11,3 +11,5 @@ export const positions = writable([
   { name: "Масло", info: "189650141", price: 120},
   { name: "Огурец", info: "102389011", price: 3}
 ])
+export const finalpositions = writable([
+])
