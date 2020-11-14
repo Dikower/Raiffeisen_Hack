@@ -39,13 +39,51 @@
   }
 
   .price > span,
-  .quantity {
+  .quantity,
+  .button {
     color: #ff9e46;
   }
   .quantity > span {
     color: black;
     font-weight: 700;
     font-size: 14px;
+    display: inline-block;
+  }
+
+  .quantity-wrapper {
+    /* white-space: nowrap; */
+    display: flex;
+  }
+
+  .button {
+    width: 30px;
+    height: 30px;
+    background-color: #f6f6f6;
+    opacity: 0.8;
+    border-radius: 50%;
+    font-weight: 900;
+    font-size: 30px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .decrease::after {
+    content: "-";
+  }
+
+  .increase::after {
+    content: "+";
+  }
+
+  .increase::after,
+  .decrease::after {
+    line-height: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 </style>
 
@@ -56,9 +94,15 @@
   </div>
   <div>
     <div class="price">{price} <span>₽</span></div>
-    {#if editable}
-       div.button.decreas
-    {/if}
-    <div class="quantity">{quantity} <span>шт</span></div>
+    <div class="quantity-wrapper">
+      {#if editable}
+        <div class="button decrease" on:click={onDec} />&nbsp;
+      {/if}
+      <div class="quantity">{quantity} <span>шт</span></div>
+      {#if editable}
+        &nbsp;
+        <div class="button increase" on:click={onInc} />
+      {/if}
+    </div>
   </div>
 </WideCard>

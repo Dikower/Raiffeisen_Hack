@@ -8,15 +8,15 @@ from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 from tortoise import Tortoise
 from starlette.middleware.cors import CORSMiddleware
-from logic import users, catalogs, tags
+from logic import users, positions
 from settings import PROD_TORTOISE_ORM, TEST_TORTOISE_ORM
-from fill_db import fill_roles
+# from fill_db import fill_roles
 
 
 app = FastAPI(
     version='0.0.1',
-    title='Data App',
-    description='API for the Common Data app based on FastAPI',
+    title='SBP-kassa',
+    description='API for the SBP-Kassa',
 )
 
 app.add_middleware(
@@ -34,16 +34,11 @@ app.include_router(
 )
 
 app.include_router(
-    catalogs.router,
-    prefix='/catalogs',
-    tags=['Catalogs']
+    positions.router,
+    prefix='/positions',
+    tags=['Positions']
 )
 
-app.include_router(
-    tags.router,
-    prefix='/tags',
-    tags=['Tags']
-)
 
 for path in ['db/test', 'db/prod']:
     Path(path).mkdir(parents=True, exist_ok=True)
@@ -53,7 +48,7 @@ for path in ['db/test', 'db/prod']:
 async def startup():
     await Tortoise.init(config=TEST_TORTOISE_ORM, modules={'models': ['models']})
     await Tortoise.generate_schemas(safe=True)
-    await fill_roles()
+    # await fill_roles()
 
 
 @app.on_event('shutdown')
