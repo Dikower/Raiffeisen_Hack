@@ -4,6 +4,7 @@ from models import Position
 from logic.users import get_user
 from pydantic import BaseModel
 from tortoise.contrib.pydantic import pydantic_model_creator
+from typing import List
 
 router = APIRouter()
 Edit = pydantic_model_creator(Position, exclude=('catalog', ))
@@ -40,7 +41,7 @@ async def edit(edited: Edit = Body(...), user=Depends(get_user)):
     return await View.from_tortoise_orm(position)
 
 
-@router.get('/all')
+@router.get('/all', response_model=List[View])
 async def get_all(user=Depends(get_user)):
     _catalog = await user.catalog
     return await View.from_queryset(_catalog.positions.all())

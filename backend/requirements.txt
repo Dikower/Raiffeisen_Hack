@@ -7,6 +7,9 @@ click==7.1.2
 ecdsa==0.14.1
 fastapi==0.61.2
 h11==0.11.0
+httpcore==0.12.1
+httpx==0.16.1
+idna==2.10
 iso8601==0.1.13
 passlib==1.7.4
 pyasn1==0.4.8
@@ -15,8 +18,10 @@ pydantic==1.7.2
 PyPika==0.44.0
 python-jose==3.2.0
 python-multipart==0.0.5
+rfc3986==1.4.0
 rsa==4.6
 six==1.15.0
+sniffio==1.2.0
 starlette==0.13.6
 tortoise-orm==0.16.17
 typing-extensions==3.7.4.3
