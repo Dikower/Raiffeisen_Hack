@@ -1,9 +1,8 @@
 <script>
   import BottomContainer from "../_components/BottomContainer.svelte";
-
   import GoodWideCard from "../_components/GoodWideCard.svelte";
   import Qr from "./_components/QR.svelte";
-
+  import {summa} from '../goods/_components/stores.js';
   //   import bg from "../../../assets/images/anal-bg.svg";
 </script>
 
@@ -26,7 +25,7 @@
 <div class="pay">
   <div class="pay-info">
     <h2>Сумма покупки</h2>
-    <h1>400₽</h1>
+    <h1>{$summa}</h1>
 
     <Qr />
   </div>
