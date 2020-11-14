@@ -5,7 +5,7 @@
   const dispatch = createEventDispatcher();
 
   export let name = "🍷Кола";
-  export let info = "Арт. 189650141";
+  export let code = "Арт. 189650141";
   // не используется
   let id = 123123123;
   export let price = 100;
@@ -91,7 +91,7 @@
 <WideCard on:click={onClick}>
   <div>
     <div class="main" onclick>{name}</div>
-    <div class="sub">{info}</div>
+    <div class="sub">{code}</div>
   </div>
   <div>
     <div class="price">{price} <span>₽</span></div>

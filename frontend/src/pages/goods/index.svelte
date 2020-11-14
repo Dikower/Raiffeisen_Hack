@@ -27,6 +27,11 @@
           p.name.toLowerCase().includes(searchText.toLowerCase())
         )
       : dynamicPositions;
+
+  $: formattedTotal = new Intl.NumberFormat("ru-RU", {
+    style: "currency",
+    currency: "RUB",
+  }).format($summa);
 </script>
 
 <style>
@@ -116,10 +121,7 @@
   <div class="HeaderSumUpd">
     <div class="Sum">
       <img src="/images/ShoppingCartGoods.svg" alt="Hehe" />
-      <h1>
-        {$summa}
-        <nobr>₽</nobr>
-      </h1>
+      <h1>{formattedTotal}</h1>
     </div>
     <button class="Upd" />
   </div>
