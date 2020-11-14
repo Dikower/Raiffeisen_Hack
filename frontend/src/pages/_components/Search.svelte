@@ -1,9 +1,9 @@
 <script>
-
+export let search_text;
 </script>
 <div class="component">
     <button class="search_button"></button>
-    <input type="text" class="search_input">
+    <input type="text" class="search_input" bind:value={search_text}>
 </div>
 <style>
     .component {
