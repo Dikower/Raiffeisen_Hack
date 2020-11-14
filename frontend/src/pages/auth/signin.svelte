@@ -1,16 +1,15 @@
 <script>
-  import {goto, url} from "@roxi/routify";
-  import {getContext} from 'svelte';
-  import Input from './_components/Input.svelte'
-  import {user, sendForm, selfUrl} from "../_api"
+  import { goto, url } from "@roxi/routify";
+  import { getContext } from "svelte";
+  import Input from "./_components/Input.svelte";
+  import { user, sendForm, selfUrl } from "../_api";
 
-  let apiUrl = getContext('apiUrl');
+  let apiUrl = getContext("apiUrl");
   let form;
   let email;
   let password;
   let errorMessage = null;
-  let socialNetworks = {
-  };
+  let socialNetworks = {};
   $: showError = !!errorMessage;
 
   function validateForm() {
@@ -33,42 +32,9 @@
       errorMessage = error;
       return;
     }
-    $goto(selfUrl, {}, false);
+    $goto("/editor", {}, false);
   }
-
-
 </script>
-
-<svelte:head>
-  <title>Вход</title>
-</svelte:head>
-
-<div class="component">
-  <h2>ВХОД:</h2>
-  <div class="right-block">
-    <div class="social-networks">
-      <p>Через соцсети:</p>
-      <ul>
-        {#each Object.entries(socialNetworks) as [sn, url]}
-          <li><a class="social-link" href={url}>{sn}</a></li>
-        {/each}
-      </ul>
-    </div>
-    <form bind:this={form}>
-      <div class="inputs-block">
-        <Input bind:this={email} span="E-mail" name="username" type="email"/>
-        <Input bind:this={password} span="Пароль" name="password" type="password"/>
-        <p class="error-label" class:showError>{errorMessage}</p>
-      </div>
-      <div class="button-block">
-        <button type="button" on:click={submit}>Вход</button>
-        <div class="p-wrapper"><p class="registration-p"><a class="registration-a"
-                                                            href='./signup'>Регистрация</a>
-        </p></div>
-      </div>
-    </form>
-  </div>
-</div>
 
 <style>
   .component {
@@ -96,7 +62,9 @@
     margin-right: 30px;
     width: 220px;
     margin-left: 15%;
-    --plain-font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1440 - 300)));
+    --plain-font-size: calc(
+      16px + (20 - 16) * ((100vw - 300px) / (1440 - 300))
+    );
   }
 
   form {
@@ -106,7 +74,9 @@
     height: 220px;
     width: 550px;
     margin-right: 5%;
-    --plain-font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1440 - 300)));
+    --plain-font-size: calc(
+      16px + (20 - 16) * ((100vw - 300px) / (1440 - 300))
+    );
   }
 
   .button-block {
@@ -114,14 +84,19 @@
     justify-content: flex-start;
   }
 
-  button:active, button:focus, button:hover {
+  button:active,
+  button:focus,
+  button:hover {
     outline: none;
     background-color: #282828;
     border-radius: 0;
   }
 
-  .registration-p, .registration-a {
-    --plain-font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1440 - 300)));
+  .registration-p,
+  .registration-a {
+    --plain-font-size: calc(
+      16px + (20 - 16) * ((100vw - 300px) / (1440 - 300))
+    );
   }
 
   .p-wrapper {
@@ -129,7 +104,9 @@
     align-items: center;
     justify-content: flex-start;
     margin-left: 20px;
-    --plain-font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1440 - 300)));
+    --plain-font-size: calc(
+      16px + (20 - 16) * ((100vw - 300px) / (1440 - 300))
+    );
   }
 
   ul {
@@ -151,7 +128,7 @@
   }
 
   .social-link:hover {
-    color: #1355FF;
+    color: #1355ff;
   }
 
   .error-label {
@@ -161,7 +138,9 @@
     opacity: 0;
     transition: opacity ease 0.5s;
     margin-top: 2%;
-    --plain-font-size: calc(16px + (18 - 16) * ((100vw - 300px) / (1440 - 300)));
+    --plain-font-size: calc(
+      16px + (18 - 16) * ((100vw - 300px) / (1440 - 300))
+    );
     color: red;
   }
 
@@ -197,3 +176,40 @@
     }
   }
 </style>
+
+<svelte:head>
+  <title>Вход</title>
+</svelte:head>
+
+<div class="component">
+  <h2>ВХОД:</h2>
+  <div class="right-block">
+    <div class="social-networks">
+      <p>Через соцсети:</p>
+      <ul>
+        {#each Object.entries(socialNetworks) as [sn, url]}
+          <li><a class="social-link" href={url}>{sn}</a></li>
+        {/each}
+      </ul>
+    </div>
+    <form bind:this={form}>
+      <div class="inputs-block">
+        <Input bind:this={email} span="E-mail" name="username" type="email" />
+        <Input
+          bind:this={password}
+          span="Пароль"
+          name="password"
+          type="password" />
+        <p class="error-label" class:showError>{errorMessage}</p>
+      </div>
+      <div class="button-block">
+        <button type="button" on:click={submit}>Вход</button>
+        <div class="p-wrapper">
+          <p class="registration-p">
+            <a class="registration-a" href="./signup">Регистрация</a>
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
