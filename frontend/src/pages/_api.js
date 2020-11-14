@@ -1,5 +1,5 @@
 import { writable, get } from "svelte/store";
-import { setContext } from "svelte";
+import { entryCode } from "./goodsStores";
 
 export const apiUrl = "https://backend.sbp-kassa.online/";
 export const selfUrl = "/";
@@ -125,35 +125,53 @@ export function getData(url) {
 
 /**
  *
- * @param {number} sum
- * @param {string} info
+ * @param {string} path без "/" в начале
+ * @param {"POST" | "GET" | "PUT" | "DELETE"} method
+ * @param {any?} body
  */
-export async function getQrCodeSrc(sum, info) {
-  /**
-   * @type {{code:string,qrId:string,payload:string,qrUrl:string}}
-   */
-  let json_response = await fetch(apiUrl + "transactions", {
-    method: "POST",
+export async function authFetch(path, method = "GET", body = undefined) {
+  return await fetch(apiUrl + path, {
+    method: method,
     headers: new Headers({
       Accept: "application/json",
       Authorization: "Bearer " + get(accessToken),
     }),
-    body: JSON.stringify({
-      sum,
-      info,
-    }),
+    body: body && JSON.stringify(body),
   }).then((res) => res.json());
-
-  return json_response.qrUrl;
 }
 
-export async function getAllPositions() {
-  // debugger;
-  return await fetch(apiUrl + "positions/all", {
+/**
+ *
+ * @param {number} sum
+ * @param {string} info
+ * @returns {Promise<{code:string,qrId:string,payload:string,qrUrl:string}>}
+ */
+export function getQrCodeSrc(sum, info) {
+  return authFetch(
+    "transactions",
+    "POST",
+    JSON.stringify({
+      sum,
+      info,
+    })
+  );
+}
+
+/**
+ * Для владельца
+ */
+export function getAllPositions() {
+  return authFetch("positions/all");
+}
+
+/**
+ * Для кассира
+ */
+export function getAllCashierPositions() {
+  return fetch(apiUrl + `catalogs/${get(entryCode)}/catalog`, {
     method: "GET",
-    headers: {
+    headers: new Headers({
       Accept: "application/json",
-      Authorization: "Bearer " + get(accessToken),
-    },
+    }),
   }).then((res) => res.json());
 }

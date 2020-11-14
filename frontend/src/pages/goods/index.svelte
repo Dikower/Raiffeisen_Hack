@@ -1,18 +1,18 @@
 <script>
   import GoodsPosition from "./_components/GoodsPosition.svelte";
   import { goto } from "@roxi/routify";
-  import { summa } from "../GooodsStores.js";
-  import { positions } from "../GooodsStores.js";
+  import { summa } from "../goodsStores.js";
+  // import { positions } from "../GooodsStores.js";
   import Search from "../_components/Search.svelte";
   import { onMount } from "svelte";
-  import { getAllPositions } from "../_api";
+  import { getAllCashierPositions } from "../_api";
 
   let searchText = "";
 
   let dynamicPositions = null;
 
   onMount(async () => {
-    dynamicPositions = await getAllPositions();
+    dynamicPositions = await getAllCashierPositions();
   });
 
   function GoToPay() {

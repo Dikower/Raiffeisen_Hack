@@ -1,21 +1,47 @@
 <script>
-  import { summa } from "../../GooodsStores.js";
-  import {finalpositions} from "../../GooodsStores.js";
+  import { summa } from "../../goodsStores.js";
+  import { finalPositions } from "../../goodsStores.js";
   export let name = "Name";
   export let info = "Info";
   export let price = 0;
-  let quantity = 0;
+
   function addition() {
     summa.update((n) => n + price);
-    finalpositions.update((n) => n.concat({name, info, price, quantity: 1}));
-    quantity++;
+    /**
+     * @type {any[]}
+     */
+    const newPostitions = JSON.parse(JSON.stringify($finalPositions));
+    let index = newPostitions.findIndex((p) => p.info === info);
+    if (index === -1) {
+      console.log("creating");
+      newPostitions.push({ name, info, price, quantity: 1 });
+    } else {
+      console.log("increasing");
+      newPostitions[index].quantity += 1;
+    }
+    finalPositions.set(newPostitions);
+    // console.log({ $finalPositions });
   }
   function deletion() {
-    if (quantity > 0) {
-      summa.update((n) => n - price);
-      quantity--;
+    summa.update((n) => n - price);
+    /**
+     * @type {any[]}
+     */
+    let newPostitions = JSON.parse(JSON.stringify($finalPositions));
+    let index = newPostitions.findIndex((p) => p.info === info);
+    if (index === -1) {
+    } else if (newPostitions[index].quantity === 1) {
+      console.log("deleting");
+      newPostitions.splice(index, 1);
+    } else {
+      console.log("decreasing");
+      newPostitions[index].quantity -= 1;
     }
+    finalPositions.set(newPostitions);
   }
+
+  $: quantity =
+    ($finalPositions.find((p) => p.info === info) || {}).quantity || 0;
 </script>
 
 <style>

@@ -5,13 +5,14 @@
   const dispatch = createEventDispatcher();
 
   export let name = "🍷Кола";
-  export let sub = "Арт. 189650141";
+  export let info = "Арт. 189650141";
+  // не используется
   let id = 123123123;
   export let price = 100;
   export let quantity = 1;
 
+  // не используется
   export let editable = false;
-
   const onInc = () => dispatch("increase", id);
   const onDec = () => dispatch("decrease", id);
   const onClick = () => {
@@ -90,7 +91,7 @@
 <WideCard on:click={onClick}>
   <div>
     <div class="main" onclick>{name}</div>
-    <div class="sub">{sub}</div>
+    <div class="sub">{info}</div>
   </div>
   <div>
     <div class="price">{price} <span>₽</span></div>
