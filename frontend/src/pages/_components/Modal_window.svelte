@@ -1,48 +1,53 @@
 <script>
     import { fly, fade } from 'svelte/transition';
+    import { onMount } from 'svelte';
     import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
     export let modal = true;
     export let good;
+    let new_data = {'id': good['id'], 'emoji': '', 'title': good['title'], 'price': good['price'], 'art': good['price']};
+    let heading = 'Изменить товар';
+    let title_placeholder = '';
+    let price_placeholder = '';
+    let art_placeholder = '';
+    onMount(() => {
+     if (good['id'] === 0) {
+         title_placeholder = 'Название';
+         price_placeholder = 'Цена';
+         art_placeholder = 'Артикул';
+         heading = 'Новая позиция'
+     }
+    });
 function Update() {
-switch (good['title']) {
+let emoji;
+switch (new_data['title']) {
 case 'Пицца':
-    good['emoji'] = '🍕';
+    emoji = '🍕';
     break;
 case 'Мороженное':
-    good['emoji'] = '🍦';
+    emoji = '🍦';
     break;
 default:
-    good['emoji'] = '📦';
+    emoji = '📦';
 }
-let buf = good;
-dispatch('update', {'data': buf});
+dispatch('update', {'data': {'id': new_data['id'], 'emoji': emoji, 'title': new_data['title'], 'price': new_data['price'], 'art': new_data['art']}});
 modal = false;
 }
 </script>
 <div class="component" transition:fade>
     <div class="window" transition:fly="{{ y: 200, duration: 1000 }}">
         <img src="/images/cross.svg" on:click={() => modal = false} class="close">
-        {#if good['id'] === 0}
-        <h1>Новая позиция</h1>
+        <h1>{heading}</h1>
         <p class="emoji_box">{good['emoji']}</p>
-        <input placeholder="Название" bind:value={good['title']}>
+        <input placeholder={title_placeholder} bind:value={new_data['title']}>
         <div class="small_input">
-        <input placeholder="Цена" bind:value={good['price']}>
+        <input placeholder={price_placeholder} bind:value={new_data['price']}>
             <img src="/images/Ruble.svg" alt="ruble" class="ruble_svg">
         </div>
         <div class="small_input">
-        <input placeholder="Артикул" bind:value={good['art']}>
+        <input placeholder={art_placeholder} bind:value={new_data['art']}>
         </div>
-            <button class="submit_button" on:click={Update}>Готово</button>
-            {:else}
-            <h1>Изменить товар</h1>
-        <p class="emoji_box">{good['emoji']}</p>
-            <input value={good['title']}>
-        <input value={good['price']}>
-        <input value={good['art']}>
-            <button class="submit_button" on>Готово</button>
-            {/if}
+        <button class="submit_button" on:click={Update}>Готово</button>
     </div>
 </div>
 <style>

@@ -1,5 +1,15 @@
 <script>
   import GoodWideCard from "../_components/GoodWideCard.svelte";
+
+  let goods = [
+    {
+      main: "🍷Кола",
+      sub: "Арт. 189650141",
+      id: 123123123,
+      price: 100,
+      quantity: 1,
+    },
+  ];
 </script>
 
 <div>
@@ -14,16 +24,11 @@
   <div>...</div>
 </div>
 <div>
-  <GoodWideCard editable />
-  <GoodWideCard editable />
-  <GoodWideCard editable />
-  <GoodWideCard editable />
-  <GoodWideCard editable />
-  <GoodWideCard editable />
-  <GoodWideCard editable />
-  <GoodWideCard editable />
-  <GoodWideCard editable />
-  <GoodWideCard editable />
-  <GoodWideCard editable />
-  <GoodWideCard editable />
+  {#each goods as good (good.id)}
+    <!-- content here -->
+    <GoodWideCard {...good} editable />
+  {:else}
+    <!-- empty list -->
+    <h2>Карзина пуста</h2>
+  {/each}
 </div>
