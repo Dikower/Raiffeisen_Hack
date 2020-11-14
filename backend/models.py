@@ -6,25 +6,21 @@ class User(Model):
     id = fields.IntField(pk=True)
     email = fields.CharField(max_length=128, unique=True)
     hashed_password = fields.CharField(max_length=512)
-    catalog: fields.ForeignKeyRelation['Catalog']
 
-    def __repr__(self):
-        return str(self.email)
+    catalog: fields.ReverseRelation['Catalog']
 
     class PydanticMeta:
-        exclude = ['id', 'hashed_password', 'is_admin']
+        exclude = ['hashed_password', ]
 
 
 class Catalog(Model):
     id = fields.IntField(pk=True)
-    owner = fields.ForeignKeyField('models.User')
-    positions = fields.ManyToManyField('models.Position')
-    entry_code = fields.IntField()
+    entry_code = fields.CharField(max_length=6)
+    user = fields.OneToOneField('models.User', related_name='catalog')
+    positions = fields.ManyToManyField('models.Position', related_name='catalog')
 
-
-class Tag(Model):
-    id = fields.IntField(pk=True)
-    name = fields.CharField(max_length=32)
+    class PydanticMeta:
+        exclude = ['historys', ]
 
 
 class Position(Model):
@@ -32,8 +28,10 @@ class Position(Model):
     code = fields.CharField(max_length=32)
     price = fields.IntField()
     name = fields.CharField(max_length=64)
-    tag = fields.ForeignKeyField('models.Tag')
+    tag = fields.CharField(max_length=32)
     emoji = fields.CharField(max_length=8)
+
+    catalog: fields.ManyToManyRelation['Catalog']
 
 
 class History(Model):
