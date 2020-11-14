@@ -41,6 +41,7 @@ class History(Model):
     id = fields.IntField(pk=True)
     time = fields.DatetimeField(auto_now_add=True)
     info = fields.TextField()
-
+    catalog = fields.ForeignKeyField('models.Catalog', related_name='history')
+    
 
 Tortoise.init_models(["models"], "models")

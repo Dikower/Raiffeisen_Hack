@@ -1,12 +1,11 @@
 import json
 import httpx
 from datetime import datetime, timedelta
-from models import History
+from models import History, Catalog
 from fastapi import APIRouter, Body, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from random import randint
 from typing import Union
-from models import Catalog
 
 
 router = APIRouter()
@@ -23,8 +22,9 @@ def startup():
 
 
 class Transaction(BaseModel):
-    sum: int
+    sum: int = Field(gt=0)
     info: str
+    entry_code: str
 
 
 class Wrapper(BaseModel):
@@ -36,6 +36,11 @@ class Wrapper(BaseModel):
 
 @router.post('/', response_model=Wrapper)
 async def get_qr(transaction: Transaction = Body(...)):
+    catalog = await Catalog.get_or_none(entry_code=transaction.entry_code)
+    if catalog is None:
+        raise HTTPException(404, 'Catalog not found')
+    await History.create(catalog=catalog, info=transaction.info)
+
     current_time = datetime.now()
     reg_res = httpx.post(
         apiUrl + 'api/sbp/v1/qr/register',

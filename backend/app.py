@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 from tortoise import Tortoise
 from starlette.middleware.cors import CORSMiddleware
-from logic import users, positions, catalogs, transactions
+from logic import users, positions, catalogs, transactions, history
 from settings import PROD_TORTOISE_ORM, TEST_TORTOISE_ORM
 # from fill_db import fill_roles
 
@@ -49,6 +49,12 @@ app.include_router(
     transactions.router,
     prefix='/transactions',
     tags=['Transactions']
+)
+
+app.include_router(
+    history.router,
+    prefix='/history',
+    tags=['History']
 )
 
 
