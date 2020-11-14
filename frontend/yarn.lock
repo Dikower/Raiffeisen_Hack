@@ -957,6 +957,13 @@
     ejs "^2.6.1"
     magic-string "^0.25.0"
 
+"@sveltejs/pancake@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@sveltejs/pancake/-/pancake-0.0.17.tgz#e3dc4d994e15fb49dd4cf87a9fe0e37e041e733c"
+  integrity sha512-8YpV/PXSmlw3ypTlhwp5r6mnZUCVwQPloQTGTb0QBdDZyGdAgybF9NWkmDe516PkLx84MfZhWw56ztcqxd3X0Q==
+  dependencies:
+    yootils "0.0.16"
+
 "@types/estree@*":
   version "0.0.45"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.45.tgz#e9387572998e5ecdac221950dab3e8c3b16af884"
@@ -3981,3 +3988,8 @@ xmlchars@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/xmlchars/-/xmlchars-2.2.0.tgz#060fe1bcb7f9c76fe2a17db86a9bc3ab894210cb"
   integrity sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==
+
+yootils@0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/yootils/-/yootils-0.0.16.tgz#4a41acf7f0c333c8508e72b046b0c749171b9de8"
+  integrity sha512-aIVecm5ucOzwhtKbl0zkfg0ZSOUR9c2da0k8cIc9umjjzkvVCWUUX/UHZ1CLPsv4wmJLqt0aWeLB7p9n9JDwYQ==

@@ -63,5 +63,8 @@
     "blacklist": [
       "/example/modal/basic/4"
     ]
+  },
+  "dependencies": {
+    "@sveltejs/pancake": "^0.0.17"
   }
 }
