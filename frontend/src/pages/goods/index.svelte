@@ -1,5 +1,6 @@
 <script>
   import GoodsPosition from "./_components/GoodsPosition.svelte";
+  import { fnTot } from "../_utils";
   import { goto } from "@roxi/routify";
   import { summa } from "../goodsStores.js";
   // import { positions } from "../GooodsStores.js";
@@ -28,10 +29,7 @@
         )
       : dynamicPositions;
 
-  $: formattedTotal = new Intl.NumberFormat("ru-RU", {
-    style: "currency",
-    currency: "RUB",
-  }).format($summa);
+  $: formattedTotal = fnTot($summa);
 </script>
 
 <style>

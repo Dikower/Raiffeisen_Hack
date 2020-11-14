@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { fnTot } from "../_utils";
 
   import WideCard from "./WideCard.svelte";
   const dispatch = createEventDispatcher();
@@ -94,7 +95,7 @@
     <div class="sub">{code}</div>
   </div>
   <div>
-    <div class="price">{price} <span>₽</span></div>
+    <div class="price">{fnTot(price)}</div>
     <div class="quantity-wrapper">
       {#if editable}
         <div class="button decrease" on:click={onDec} />&nbsp;

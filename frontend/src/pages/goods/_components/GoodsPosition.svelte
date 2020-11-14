@@ -1,6 +1,8 @@
 <script>
   import { summa } from "../../goodsStores.js";
   import { finalPositions } from "../../goodsStores.js";
+  import { fnTot } from "../../_utils";
+
   export let name = "Name";
   export let code = "i did not get a code";
   export let price = 0;
@@ -140,10 +142,7 @@
   </div>
 
   <div class="Control">
-    <div class="Price">
-      {price}
-      <nobr>₽</nobr>
-    </div>
+    <div class="Price">{fnTot(price)}</div>
     <div class="ControlPanel">
       <button
         on:click={deletion}

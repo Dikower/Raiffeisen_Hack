@@ -7,11 +7,13 @@
   import { onMount } from "svelte";
   import { getQrCodeSrc } from "../_api";
   import { get } from "svelte/store";
+  import { fnTot } from "../_utils";
 
   let qrSrc = "";
   onMount(async () => {
     qrSrc = await getQrCodeSrc(get(summa), "HUI");
   });
+  $: formattedTotal = fnTot($summa);
 </script>
 
 <style>
@@ -42,7 +44,7 @@
 <div class="pay">
   <div class="pay-info">
     <h2>Сумма покупки</h2>
-    <h1>{$summa}₽</h1>
+    <h1>{formattedTotal}</h1>
 
     <Qr qrLink={qrSrc} />
   </div>

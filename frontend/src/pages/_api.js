@@ -147,14 +147,16 @@ export async function authFetch(path, method = "GET", body = undefined) {
  * @returns {Promise<{code:string,qrId:string,payload:string,qrUrl:string}>}
  */
 export function getQrCodeSrc(sum, info) {
-  return fetch("transactions/", {
+  return fetch(apiUrl + "transactions/", {
     method: "POST",
     body: JSON.stringify({
       sum,
       info,
       entry_code: get(entryCode),
     }),
-  });
+  })
+    .then((res) => res.json())
+    .then((res) => res.qrUrl);
 }
 
 /**
