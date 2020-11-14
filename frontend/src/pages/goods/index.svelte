@@ -12,7 +12,9 @@
   let dynamicPositions = null;
 
   onMount(async () => {
-    dynamicPositions = await getAllCashierPositions();
+    dynamicPositions = (await getAllCashierPositions()).positions;
+    // debugger
+    console.log("Got dynamicPositions");
   });
 
   function GoToPay() {
