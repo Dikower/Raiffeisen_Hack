@@ -2,10 +2,13 @@ import json
 import httpx
 from datetime import datetime, timedelta
 from models import History
-from fastapi import APIRouter, Body
+from fastapi import APIRouter, Body, HTTPException
 from pydantic import BaseModel
 from random import randint
 from typing import Union
+from models import Catalog
+
+
 router = APIRouter()
 secrets: Union[None, dict] = None
 apiUrl = 'https://test.ecom.raiffeisen.ru/'
@@ -49,6 +52,4 @@ async def get_qr(transaction: Transaction = Body(...)):
             "sbpMerchantId": secrets['MerchantId']
         }
     )
-    await History.create(info=transaction.info)
     return Wrapper(**reg_res.json())
-# Test
