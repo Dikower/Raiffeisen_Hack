@@ -42,9 +42,8 @@ async def get_qr(transaction: Transaction = Body(...)):
         json={
             # "account": 40700000000000000000,
             "additionalInfo": "Доп информация",
-            "amount": 1,
+            "amount": transaction.sum,
             "createDate": current_time.strftime('%Y-%m-%dT%H:%M:%S+03:00'),
-            "qrExpirationDate": (current_time + timedelta(minutes=5)).strftime('%Y-%m-%dT%H:%M:%S+03:00'),
             "currency": "RUB",
             "order": randint(0, 99999999999),
             "paymentDetails": "Оплата товаров",
