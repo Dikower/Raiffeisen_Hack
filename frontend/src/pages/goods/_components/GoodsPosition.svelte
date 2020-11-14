@@ -85,6 +85,11 @@
     width: 40px;
     height: 40px;
     margin: 0;
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: default;
+    filter: grayscale();
   }
   button nobr {
     font-size: 20px;
@@ -115,7 +120,10 @@
       <nobr>₽</nobr>
     </div>
     <div class="ControlPanel">
-      <button on:click={deletion} class="ButMin"><nobr>-</nobr></button>
+      <button
+        on:click={deletion}
+        disabled={quantity === 0}
+        class="ButMin"><nobr>-</nobr></button>
       <p class="amount">
         {quantity}
         <nobr>шт</nobr>
