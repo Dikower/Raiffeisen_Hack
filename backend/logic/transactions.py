@@ -51,3 +51,4 @@ async def get_qr(transaction: Transaction = Body(...)):
     )
     await History.create(info=transaction.info)
     return Wrapper(**reg_res.json())
+# Test
