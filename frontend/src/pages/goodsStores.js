@@ -1,5 +1,11 @@
 import { writable } from "svelte/store";
 
+/**
+ * Номер каталога
+ */
+export const entryCode = writable("")
+entryCode.set(localStorage.getItem('entryCode'))
+
 export const summa = writable(0);
 export const positions = writable([
   { name: "Кола", info: "189650141", price: 20 },
@@ -15,4 +21,4 @@ export const positions = writable([
 /**
  * @type {import("svelte/store").Writable<{name:string;info:string;price:number;quantity:number}[]>}
  */
-export const finalpositions = writable([]);
+export const finalPositions = writable([]);
