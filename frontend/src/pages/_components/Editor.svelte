@@ -12,7 +12,7 @@
   import Modal_window from "./Modal_window.svelte";
   import { onMount } from "svelte";
 
-  let goods = [];
+  let goods = [{ id: "", emoji: "💡", name: "", price: "", code: "", tag: "" }];
 
   let search_text = "";
   let modal = false;
@@ -66,7 +66,6 @@
       el["ind"] = counter;
       counter++;
     });
-    console.log(goods);
   });
 </script>
 

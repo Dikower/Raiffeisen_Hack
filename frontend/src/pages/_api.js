@@ -65,7 +65,7 @@ export function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-function deleteCookie(name) {
+export function deleteCookie(name) {
   setCookie(name, "", {
     "max-age": -1,
   });
@@ -147,14 +147,14 @@ export async function authFetch(path, method = "GET", body = undefined) {
  * @returns {Promise<{code:string,qrId:string,payload:string,qrUrl:string}>}
  */
 export function getQrCodeSrc(sum, info) {
-  return authFetch(
-    "transactions",
-    "POST",
-    JSON.stringify({
+  return fetch("transactions/", {
+    method: "POST",
+    body: JSON.stringify({
       sum,
       info,
-    })
-  );
+      entry_code: get(entryCode),
+    }),
+  });
 }
 
 /**
@@ -166,9 +166,10 @@ export function getAllPositions() {
 
 /**
  * Для кассира
+ * @returns {Promise<{positions:[]}>}
  */
 export function getAllCashierPositions() {
-  return fetch(apiUrl + `catalogs/${get(entryCode)}/catalog`, {
+  return fetch(apiUrl + `catalogs/${get(entryCode)}`, {
     method: "GET",
     headers: new Headers({
       Accept: "application/json",

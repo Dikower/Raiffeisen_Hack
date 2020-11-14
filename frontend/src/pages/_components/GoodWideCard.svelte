@@ -52,8 +52,8 @@
   }
 
   .quantity-wrapper {
-    /* white-space: nowrap; */
     display: flex;
+    justify-content: flex-end;
   }
 
   .button {

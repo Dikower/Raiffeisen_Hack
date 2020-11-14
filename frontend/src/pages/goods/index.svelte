@@ -12,7 +12,9 @@
   let dynamicPositions = null;
 
   onMount(async () => {
-    dynamicPositions = await getAllCashierPositions();
+    dynamicPositions = (await getAllCashierPositions()).positions;
+    // debugger
+    console.log("Got dynamicPositions");
   });
 
   function GoToPay() {
@@ -130,8 +132,8 @@
       <!-- content here -->
       loading
     {:else if Array.isArray(dynamicPositions)}
-      {#each filteredPositions as { name, info, price }}
-        <GoodsPosition {name} {info} {price} />
+      {#each filteredPositions as { name, code, price }}
+        <GoodsPosition {name} {code} {price} />
       {/each}
       <div class="ToPay">
         <button on:click={GoToPay} disabled={$summa === 0}>
