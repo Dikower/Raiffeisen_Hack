@@ -6,8 +6,8 @@
     data: [
       { x: 1, y: 0 },
       { x: 2, y: 1 },
-      { x: 3, y: 2 },
-      { x: 4, y: 3 },
+      { x: 3, y: 4 },
+      { x: 4, y: 1 },
     ],
   };
 
@@ -26,9 +26,11 @@
 
 <style>
   .chart {
-    height: 400px;
-    padding: 3em 0 2em 2em;
+    /* height: 260px; */
+    height: 50vh;
+    padding: 3em 1.5em 0 1.5em;
     margin: 0 0 36px 0;
+    overflow: hidden;
   }
 
   input {
@@ -45,7 +47,14 @@
   .grid-line.horizontal {
     width: calc(100% + 2em);
     left: -2em;
-    border-bottom: 1px dashed #ccc;
+    /* border-bottom: 1px dashed #ccc; */
+  }
+
+  .grid-line.vertical {
+    /* width: calc(100% + 2em); */
+    /* left: -2em; */
+    border-left: 1px dashed rgba(255, 255, 255, 0.6);
+    height: 100%;
   }
 
   .grid-line span {
@@ -54,7 +63,7 @@
     bottom: 2px;
     font-family: sans-serif;
     font-size: 14px;
-    color: #999;
+    color: white;
   }
 
   .x-label {
@@ -64,7 +73,7 @@
     bottom: -22px;
     font-family: sans-serif;
     font-size: 14px;
-    color: #999;
+    color: white;
     text-align: center;
   }
 
@@ -77,7 +86,7 @@
   }
 
   .highlight {
-    stroke: #ff3e00;
+    stroke: white;
     fill: none;
     stroke-width: 2;
   }
@@ -96,7 +105,7 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: #ff3e00;
+    background-color: white;
     border-radius: 50%;
     transform: translate(-50%, -50%);
   }
@@ -120,6 +129,7 @@
 
     <Pancake.Grid vertical count={5} let:value>
       <span class="x-label">{value}</span>
+      <div class="grid-line vertical" />
     </Pancake.Grid>
 
     <Pancake.Svg>
