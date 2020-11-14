@@ -86,8 +86,7 @@
 
 
   .Body{
-    /* background-color: #f8f8f8; */
-    background-color: aqua;
+    background-color: #f8f8f8;
     display: flex;
     flex-direction: column;
     align-items: center;
