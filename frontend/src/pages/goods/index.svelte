@@ -3,44 +3,50 @@
   import { goto } from "@roxi/routify";
   import { summa } from "../GooodsStores.js";
   import { positions } from "../GooodsStores.js";
+  import Search from "../_components/Search.svelte";
+
+  let searchText = "";
 
   function GoToPay() {
     $goto("../pay");
   }
+
+  $: filteredPositions = searchText
+    ? $positions.filter((p) =>
+        p.name.toLowerCase().includes(searchText.toLowerCase())
+      )
+    : $positions;
 </script>
 
 <style>
   main {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    max-width: 900px;
+    margin: auto;
   }
 
-  .Header {
-    background-color: #f8f8f8;
-    height: 150px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .Header .Sum {
+  .Sum {
     display: flex;
     margin-left: 5%;
   }
-  .Header h1 {
+  h1 {
     margin-left: 10px;
   }
-  .Header input {
-    width: 90%;
-    border-radius: 30px;
-  }
-  .Header .HeaderSumUpd {
+
+  .HeaderSumUpd {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    position: sticky;
+    top: 0;
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 0)
+    );
   }
-  .Header .HeaderSumUpd .Upd {
+
+  .HeaderSumUpd .Upd {
     border: 0;
     align-self: center;
     margin-right: 5%;
@@ -50,11 +56,11 @@
     background-image: url(/images/TrashCanGoods.svg);
     background-size: 100% 100%;
   }
-  .Header .HeaderSumUpd nobr {
+  .HeaderSumUpd nobr {
     color: orange;
     font-size: 20px;
   }
-  .Header .HeaderSumUpd img {
+  .HeaderSumUpd img {
     margin-top: 20px;
     width: 50px;
     height: 50px;
@@ -96,22 +102,22 @@
 </style>
 
 <main>
-  <div class="Header">
-    <div class="HeaderSumUpd">
-      <div class="Sum">
-        <img src="/images/ShoppingCartGoods.svg" alt="Hehe" />
-        <h1>
-          {$summa}
-          <nobr>₽</nobr>
-        </h1>
-      </div>
-      <button class="Upd" />
+  <div class="HeaderSumUpd">
+    <div class="Sum">
+      <img src="/images/ShoppingCartGoods.svg" alt="Hehe" />
+      <h1>
+        {$summa}
+        <nobr>₽</nobr>
+      </h1>
     </div>
-    <input type="search" name="q" placeholder="Поиск по сайту" />
+    <button class="Upd" />
+  </div>
+  <div class="input-wrapper">
+    <Search bind:search_text={searchText} />
   </div>
 
   <div class="Body">
-    {#each $positions as { name, info, price }}
+    {#each filteredPositions as { name, info, price }}
       <GoodsPosition {name} {info} {price} />
     {/each}
   </div>
