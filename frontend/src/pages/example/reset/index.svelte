@@ -18,3 +18,5 @@
 <img src="data:image/png;base64, {base64Kevin}" alt="KEVIN!" class="center" />
 
 <a href={$url('../../')}>Go back</a>
+
+<h1>HoI</h1>
