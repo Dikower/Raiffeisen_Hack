@@ -48,8 +48,8 @@
   </div>
   <BottomContainer>
     <div class="Body">
-      {#each $finalPositions as { name, info, price, quantity }}
-        <GoodWideCard {name} {info} {price} {quantity} />
+      {#each $finalPositions as { name, code, price, quantity }}
+        <GoodWideCard {name} {code} {price} {quantity} />
       {/each}
     </div>
   </BottomContainer>

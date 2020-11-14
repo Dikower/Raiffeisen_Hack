@@ -2,7 +2,7 @@
   import { summa } from "../../goodsStores.js";
   import { finalPositions } from "../../goodsStores.js";
   export let name = "Name";
-  export let code = "i did not get an info";
+  export let code = "i did not get a code";
   export let price = 0;
 
   function addition() {
