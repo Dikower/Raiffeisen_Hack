@@ -3,9 +3,13 @@
   import {summa} from './_components/stores.js';
   let positions = [
     { name: "Кола", info: "189650141", price: 20},
-    { name: "Картошка фри", info: "102389011", price: 48},
-    { name: "Кола", info: "189650141", price: 20},
-    { name: "Картошка фри", info: "102389011", price: 48}
+    { name: "Картошка", info: "102389011", price: 48},
+    { name: "Сыр", info: "189650141", price: 20},
+    { name: "Молоко", info: "102389011", price: 58},
+    { name: "Хлеб", info: "189650141", price: 23},
+    { name: "Булочка", info: "102389011", price: 88},
+    { name: "Масло", info: "189650141", price: 120},
+    { name: "Огурец", info: "102389011", price: 3}
   ]
 </script>
 
@@ -22,12 +26,18 @@
     <input type="search" name="q" placeholder="Поиск по сайту">
   </div>
 
-
-
   <div class = "Body">
     {#each positions as {name,info,price}}
       <GoodsPosition {name} {info} {price}/>
     {/each}
+  </div>
+
+  
+  <div class="ToPay">
+    <form action="/pay">
+      <button>Go To Pay!</button>
+    </form>
+    
   </div>
 </main>
 
@@ -81,16 +91,26 @@
     width: 50px;
     height: 50px;
   }
-
-
-
-
   .Body{
-    /* background-color: #f8f8f8; */
-    background-color: aqua;
+    background-color: #f8f8f8;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+  }
+  .ToPay{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    position: fixed;
+    bottom:0px;
+  }
+  .ToPay form{
+    width: 100%;
+    height: 100%;
+  }
+  .ToPay form button{
+    width: 100%;
+    height: 100%;
   }
 </style>
