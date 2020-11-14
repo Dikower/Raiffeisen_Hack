@@ -43,5 +43,16 @@ async def edit(edited: Edit = Body(...), user=Depends(get_user)):
 
 @router.get('/all', response_model=List[View])
 async def get_all(user=Depends(get_user)):
-    _catalog = await user.catalog
-    return await View.from_queryset(_catalog.positions.all())
+    catalog = await user.catalog
+    return await View.from_queryset(catalog.positions.all())
+
+
+@router.delete('/{_id}/delete', response_model=List[View])
+async def edit_catalog(_id: int, user=Depends(get_user)):
+    catalog = await user.catalog
+    position = await catalog.positions.filter(id=_id)
+    if position:
+        position = position[0]
+        await position.delete()
+    catalog = await user.catalog
+    return await View.from_queryset(catalog.positions.all())
