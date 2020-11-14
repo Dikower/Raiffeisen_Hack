@@ -27,10 +27,10 @@
     padding: 16px;
     /* display: inline-block; */
   }
-  h2{
+  h2 {
     color: white;
   }
-  h1{
+  h1 {
     margin-top: -20px;
     margin-bottom: 10px;
     font-size: 50px;
@@ -48,8 +48,8 @@
   </div>
   <BottomContainer>
     <div class="Body">
-      {#each $finalpositions as { name, info, price }}
-        <GoodWideCard {name} {info} {price} />
+      {#each $finalpositions as { name, info, price, quantity }}
+        <GoodWideCard {name} {info} {price} {quantity} />
       {/each}
     </div>
   </BottomContainer>
