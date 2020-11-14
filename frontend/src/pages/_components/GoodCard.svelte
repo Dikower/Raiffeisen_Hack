@@ -1,4 +1,5 @@
 <script>
+  import { fly, fade } from 'svelte/transition';
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   export let thumbnail =
@@ -42,7 +43,7 @@
 <svelte:head>
   <meta charset="UTF-8">
 </svelte:head>
-<div class="good-card" on:click={handleClick}>
+<div class="good-card" on:click={handleClick} transition:fade>
   {#if good['id'] === 0}
     <img src="/images/plus.svg" class="new_good_svg" alt="new_good">
     {:else}
