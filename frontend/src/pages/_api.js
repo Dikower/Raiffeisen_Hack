@@ -1,7 +1,7 @@
 import { writable, get } from "svelte/store";
 import { setContext } from "svelte";
 
-export const apiUrl = "https://01d247bffb9a.ngrok.io/";
+export const apiUrl = "https://301706e8534b.ngrok.io/";
 export const selfUrl = "/";
 
 export let user = writable("");

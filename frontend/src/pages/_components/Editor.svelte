@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital@1&display=swap" rel="stylesheet">
 <script>
   let goods = [{'ind': 0, 'id': '', 'emoji': '💡', 'name': '', 'price': '', 'code': '', 'tag': ''}];
-  let api_url = 'https://01d247bffb9a.ngrok.io/';
+  let api_url = 'https://301706e8534b.ngrok.io/';
   import { getCookie } from "../_api.js";
   let search_text = '';
   import Modal_window from "./Modal_window.svelte";
@@ -22,7 +22,7 @@
     let obj = event.detail.data;
     if (obj['ind'] === 0) {
       goods.push({'ind': goods.length, 'id': '', 'emoji': obj['emoji'], 'name': obj['name'], 'price': obj['price'], 'code': obj['code'], 'tag': ''});
-      const json_response = await Authorised_fetch_post('positions/create',
+      const json_response = await Authorised_fetch_sec('positions/create', 'Post',
               {'emoji': obj['emoji'], 'name': obj['name'], 'price': Number(obj['price']), 'code': obj['code'], 'tag': ''});
       console.log(goods);
       goods[goods.length-1]['id'] = json_response['id'];
@@ -32,16 +32,24 @@
       goods[obj['ind']]['name'] = obj['name'];
       goods[obj['ind']]['price'] = obj['price'];
       goods[obj['ind']]['code'] = obj['code'];
+      const json_response = await Authorised_fetch_sec('positions/edit', 'Put',
+              {'id': obj['id'], 'emoji': obj['emoji'], 'name': obj['name'], 'price': Number(obj['price']), 'code': obj['code'], 'tag': ''})
     }
   }
   import { onMount } from 'svelte';
   onMount(async () => {
     const json_response = await Authorised_fetch_get('positions/all', 'Get');
     goods = goods.concat(json_response);
+    let counter = 0;
+    goods.forEach((el) => {
+      el['ind'] = counter;
+      counter++;
+    });
+    console.log(goods);
   });
-  async function Authorised_fetch_post(path, obj) {
+  async function Authorised_fetch_sec(path, method, obj) {
    return await fetch(api_url + path, {
-      method: 'Post',
+      method: method,
       headers: new Headers({
         'Accept': 'application/json',
         'Authorization': 'Bearer ' + getCookie('access_token'),
