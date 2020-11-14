@@ -53,7 +53,7 @@
 <div class="goods-container">
   {#each goods as good}
     {#if search_text === '' || (search_text.length <= good['title'].length && good['title'].slice(0, search_text.length) === search_text) || good['id']===0 }
-    <Card good={good} on:click="{() => {chosen_good = good; modal = true; alert(good['title']+'\w*')}}"/>
+    <Card good={good} on:click="{() => {chosen_good = good; modal = true; }}"/>
       {/if}
   {/each}
   {#if modal}

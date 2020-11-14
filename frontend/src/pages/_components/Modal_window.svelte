@@ -27,6 +27,24 @@ case 'Пицца':
 case 'Мороженное':
     emoji = '🍦';
     break;
+case 'Шаурма':
+    emoji = '🌯';
+    break;
+case 'Пончики':
+    emoji = '🍩';
+    break;
+case 'Вино':
+    emoji = '🍷';
+    break;
+case 'Пиво':
+    emoji = '🍺';
+    break;
+case 'Хот дог':
+    emoji = '🌭';
+    break;
+case 'Лапша':
+    emoji = '🥡';
+    break;
 default:
     emoji = '📦';
 }
