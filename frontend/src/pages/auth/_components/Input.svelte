@@ -26,7 +26,6 @@
   <input bind:this={input} { placeholder } {type} class="{className}" {name} {value} on:input={handleInput}
          on:focus={() => focus = true}
          on:blur={() => focus = value !== ""}>
-  <span class:focus>{span}</span>
 </label>
 
 <style>
@@ -42,7 +41,6 @@
   }
 
   .focus {
-    margin-top: -7px;
     font-size: calc(var(--plain-font-size) - 7px);
   }
 
@@ -60,12 +58,13 @@
     border-bottom-color: var(--mainColor);
     color: var(--mainColor);
     width: 100%;
-    font-size: calc(var(--plain-font-size) - 5px);
+    font-size: 15px;
     transition: 0.5s ease;
+    outline: none;
   }
 
   input:invalid {
-    border-bottom-color: #F45B69;
+    border-bottom-color: #FF9E46;
   }
 
   .invalid {

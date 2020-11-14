@@ -38,42 +38,54 @@
 
 <style>
   .component {
-    height: 50%;
-    width: 90%;
+    position: absolute;
+    height: 100%;
+    width: 100%;
     display: flex;
-    flex-direction: row;
-    margin-left: 5%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url("/images/auth_back.svg");
+    background-size: cover;
   }
 
+  .headings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 20px 0;
+  }
+  .headings h2 {
+    color: #FF9E46;
+  }
+  .p-wrapper a{
+    color: #000000;
+  }
+  .headings h2 {
+    margin: 0 20px;
+  }
+  .p-wrapper {
+    border-right: 2px solid #000000;
+  }
   .inputs-block {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 150px;
+    align-items: center;
   }
 
   .right-block {
+    min-width: 250px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-  }
-
-  .social-networks {
-    margin-right: 30px;
-    width: 220px;
-    margin-left: 15%;
-    --plain-font-size: calc(
-      16px + (20 - 16) * ((100vw - 300px) / (1440 - 300))
-    );
   }
 
   form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 220px;
-    width: 550px;
-    margin-right: 5%;
+    width: 350px;
     --plain-font-size: calc(
       16px + (20 - 16) * ((100vw - 300px) / (1440 - 300))
     );
@@ -81,15 +93,13 @@
 
   .button-block {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   button:active,
   button:focus,
   button:hover {
     outline: none;
-    background-color: #282828;
-    border-radius: 0;
   }
 
   .registration-p,
@@ -98,12 +108,10 @@
       16px + (20 - 16) * ((100vw - 300px) / (1440 - 300))
     );
   }
-
   .p-wrapper {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 20px;
     --plain-font-size: calc(
       16px + (20 - 16) * ((100vw - 300px) / (1440 - 300))
     );
@@ -147,7 +155,20 @@
   .showError {
     opacity: 1;
   }
-
+  .round_button {
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+    background: transparent url("/images/GoToPayGoods.svg");
+    background-size: cover;
+    border: 0;
+    outline: none;
+  }
+  @media (min-width: 768px) {
+    .headings h2, .p-wrapper a {
+      font-size: 20px;
+    }
+  }
   @media (max-width: 768px) {
     .component {
       flex-direction: column;
@@ -172,7 +193,10 @@
     }
 
     form {
-      width: 95%;
+      width: 100%;
+    }
+    .headings h2, .p-wrapper a {
+      font-size: 15px;
     }
   }
 </style>
@@ -182,33 +206,26 @@
 </svelte:head>
 
 <div class="component">
-  <h2>ВХОД:</h2>
+  <div class="headings">
+  <div class="p-wrapper">
+          <h2 class="registration-p">
+            <a class="registration-a" href="./signup">РЕГИСТРАЦИЯ</a>
+          </h2>
+        </div><h2>АВТОРИЗАЦИЯ</h2>
+  </div>
   <div class="right-block">
-    <div class="social-networks">
-      <p>Через соцсети:</p>
-      <ul>
-        {#each Object.entries(socialNetworks) as [sn, url]}
-          <li><a class="social-link" href={url}>{sn}</a></li>
-        {/each}
-      </ul>
-    </div>
     <form bind:this={form}>
       <div class="inputs-block">
-        <Input bind:this={email} span="E-mail" name="username" type="email" />
+        <Input bind:this={email} placeholder="E-mail" name="username" type="email" />
         <Input
           bind:this={password}
-          span="Пароль"
+          placeholder="Пароль"
           name="password"
           type="password" />
         <p class="error-label" class:showError>{errorMessage}</p>
       </div>
       <div class="button-block">
-        <button type="button" on:click={submit}>Вход</button>
-        <div class="p-wrapper">
-          <p class="registration-p">
-            <a class="registration-a" href="./signup">Регистрация</a>
-          </p>
-        </div>
+        <button type="button" class="round_button" on:click={submit}></button>
       </div>
     </form>
   </div>
