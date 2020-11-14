@@ -29,6 +29,7 @@
     padding: 3em 2em 2em 2em;
     /* width: 70vw; */
     margin: auto;
+    overflow: hidden;
   }
 
   @media only screen and (max-width: 600px) {
