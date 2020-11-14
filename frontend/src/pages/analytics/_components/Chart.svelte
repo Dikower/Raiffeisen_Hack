@@ -27,7 +27,7 @@
   .chart {
     height: 60vh;
     padding: 3em 2em 2em 2em;
-    width: 70vw;
+    /* width: 70vw; */
     margin: auto;
   }
 
