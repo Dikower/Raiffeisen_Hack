@@ -13,8 +13,11 @@
 
   <div class = "Header">
     <div class="HeaderSumUpd">
-      <img src="/images/ShoppingCartGoods.svg" alt="Hehe">
-      <h1>{$summa}<nobr>₽</nobr></h1>    
+      <div class="Sum">
+        <img src="/images/ShoppingCartGoods.svg" alt="Hehe">
+        <h1>{$summa}<nobr>₽</nobr></h1>
+      </div>
+      <button class="Upd"></button>
     </div>
     <input type="search" name="q" placeholder="Поиск по сайту">
   </div>
@@ -34,6 +37,7 @@
     flex-direction: column;
     align-items: center;
   }
+
   .Header{
     background-color: #f8f8f8;
     height: 150px;
@@ -41,6 +45,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .Header .Sum{
+    display: flex;
+    margin-left: 5%;
   }
   .Header h1{
     margin-left: 10px;
@@ -51,19 +59,32 @@
   }
   .Header .HeaderSumUpd{
     display: flex;
-    align-self: flex-start;
+    justify-content: space-between;
     width: 100%;
+  }
+  .Header .HeaderSumUpd .Upd{
+    border: 0;
+    align-self: center;
+    margin-right: 5%;
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+    background-image: url(/images/TrashCanGoods.svg);
+    background-size: 100% 100%;
   }
   .Header .HeaderSumUpd nobr{
     color: orange;
     font-size: 20px;
   }
   .Header .HeaderSumUpd img{
-    margin-left: 5%;
     margin-top: 20px;
     width: 50px;
     height: 50px;
   }
+
+
+
+
   .Body{
     background-color: #f8f8f8;
     display: flex;

@@ -21,7 +21,7 @@
   }
 </script>
 
-<main>
+
   <div class = "GoodsBox">
     <div class = "Info">
       <p class="Name">{name}</p>
@@ -41,7 +41,6 @@
     </div>
     
   </div>
-</main>
 
 <style>
   .Info{
@@ -98,8 +97,9 @@
     height: 100px;
     display: flex;
     justify-content: space-between;
-    width: 400px;  
     border-radius: 15px;
+    min-width: 300px;
+    width: 90%;   
   }
   button{
     border-radius: 100%;

@@ -17,8 +17,8 @@
   function Update_goods(event) {
     let obj = event.detail.data;
     if (obj['id'] === 0) {
-      obj['id'] = goods.length;
-      goods.push(obj);
+      console.log(obj);
+      goods.push({'id': goods.length, 'emoji': obj['emoji'], 'title': obj['title'], 'price': obj['price'], 'art': obj['art']});
     } else {
       goods[obj['id']]['emoji'] = obj['emoji'];
       goods[obj['id']]['title'] = obj['title'];
@@ -39,7 +39,7 @@
     font-family: 'Nunito', sans-serif;
   }
   .goods-container {
-    margin: 60px;
+    margin: auto;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -51,7 +51,7 @@
   <Search/>
 <div class="goods-container">
   {#each goods as good}
-    <Card good={good} on:click="{() => {chosen_good = good; modal = true; console.log(good)}}"/>
+    <Card good={good} on:click="{() => {chosen_good = good; modal = true;}}"/>
   {/each}
   {#if modal}
   <Modal_window good={chosen_good} bind:modal={modal} on:update={Update_goods}/>
