@@ -7,8 +7,6 @@
   function GoToPay() {
     $goto("../pay");
   }
-
-  console.log({ positions });
 </script>
 
 <style>
