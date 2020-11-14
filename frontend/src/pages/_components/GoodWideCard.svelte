@@ -8,7 +8,7 @@
   export let sub = "Арт. 189650141";
   let id = 123123123;
   export let price = 100;
-  let quantity = 1;
+  export let quantity = 1;
 
   export let editable = false;
 
