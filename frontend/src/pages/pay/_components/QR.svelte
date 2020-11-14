@@ -18,4 +18,8 @@
   }
 </style>
 
-<div><img src={qrLink} alt="QR-код для оплаты" /></div>
+<div>
+  <img
+    src={qrLink || 'https://media1.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif'}
+    alt="QR-код для оплаты" />
+</div>
