@@ -27,6 +27,15 @@
     padding: 16px;
     /* display: inline-block; */
   }
+  h2{
+    color: white;
+  }
+  h1{
+    margin-top: -20px;
+    margin-bottom: 10px;
+    font-size: 50px;
+    color: white;
+  }
 </style>
 
 <!-- routify:options index=3 -->
