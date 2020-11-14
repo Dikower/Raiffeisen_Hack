@@ -1,5 +1,6 @@
 <script>
-  import { summa } from "./stores";
+  // import { summa } from "./stores";
+  import {summa} from '../../GooodsStores.js';
   export let name = "Name";
   export let info = "Info";
   export let price = 0;
