@@ -28,9 +28,9 @@
   .chart {
     /* height: 260px; */
     height: 50vh;
-    padding: 3em 1.5em 0 1.5em;
+    padding: 3em 2em 0 2em;
     margin: 0 0 36px 0;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   input {
