@@ -106,10 +106,15 @@
   href="https://fonts.googleapis.com/css2?family=Nunito:ital@1&display=swap"
   rel="stylesheet" />
 <div class="component">
-  <button>
-    Номер Вашего каталога 
-    
-  </button>
+  <div>
+    Номер Вашего каталога
+    {#await personalEditCode}
+      <!-- promise is pending -->
+    {:then code}
+      <!-- promise was fulfilled -->
+      {code}
+    {/await}
+  </div>
   <button
     class="logout"
     on:click={() => {

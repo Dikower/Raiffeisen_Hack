@@ -1,5 +1,5 @@
 import { writable, get } from "svelte/store";
-import { setContext } from "svelte";
+import { entryCode } from "./goodsStores";
 
 export const apiUrl = "https://backend.sbp-kassa.online/";
 export const selfUrl = "/";
@@ -168,7 +168,7 @@ export function getAllPositions() {
  * Для кассира
  */
 export function getAllCashierPositions() {
-  return fetch(apiUrl + `catalogs/${entryCode}/catalog`, {
+  return fetch(apiUrl + `catalogs/${get(entryCode)}/catalog`, {
     method: "GET",
     headers: new Headers({
       Accept: "application/json",

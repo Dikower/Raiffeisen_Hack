@@ -9,7 +9,7 @@ router = APIRouter()
 View = pydantic_model_creator(Catalog)
 
 
-@router.get('/{entry_code}/catalog', response_model=View)
+@router.get('/{entry_code}', response_model=View)
 async def get_catalog(entry_code: int):
     catalog = await Catalog.get_or_none(entry_code=entry_code)
     if not catalog:
