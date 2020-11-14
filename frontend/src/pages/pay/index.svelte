@@ -2,7 +2,7 @@
   import BottomContainer from "../_components/BottomContainer.svelte";
   import GoodWideCard from "../_components/GoodWideCard.svelte";
   import Qr from "./_components/QR.svelte";
-  import {summa} from '../goods/_components/stores.js';
+  import {summa} from '../GooodsStores.js';
   //   import bg from "../../../assets/images/anal-bg.svg";
 </script>
 

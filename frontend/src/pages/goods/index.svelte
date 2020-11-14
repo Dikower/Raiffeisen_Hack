@@ -2,6 +2,7 @@
   import GoodsPosition from './_components/GoodsPosition.svelte'
   //import {summa} from './_components/stores.js';
   import {summa} from '../GooodsStores.js';
+  import {goto} from '@roxi/routify';
   let positions = [
     { name: "Кола", info: "189650141", price: 20},
     { name: "Картошка", info: "102389011", price: 48},
@@ -12,6 +13,9 @@
     { name: "Масло", info: "189650141", price: 120},
     { name: "Огурец", info: "102389011", price: 3}
   ]
+  function GoToPay(){
+    $goto("../pay");
+  }
 </script>
 
 <main>
@@ -35,10 +39,7 @@
 
   
   <div class="ToPay">
-    <form action="/pay">
-      <button>Go To Pay!</button>
-    </form>
-    
+      <button on:click={GoToPay}></button>
   </div>
 </main>
 
@@ -102,7 +103,6 @@
   .ToPay{
     width: 100px;
     height: 100px;
-    background-color: aqua;
     position: fixed;
     bottom:0px;
   }
@@ -111,6 +111,9 @@
     height: 100%;
   }
   .ToPay form button{
+    background-image: url(/images/GoToPayGoods.svg);
+    background-size: 100% 100%;
+    border: 0;
     width: 100%;
     height: 100%;
   }
