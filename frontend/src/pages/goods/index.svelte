@@ -27,6 +27,10 @@
           p.name.toLowerCase().includes(searchText.toLowerCase())
         )
       : dynamicPositions;
+
+  $: {
+    console.log({ filteredPositions });
+  }
 </script>
 
 <style>
@@ -132,8 +136,8 @@
       <!-- content here -->
       loading
     {:else if Array.isArray(dynamicPositions)}
-      {#each filteredPositions as { name, info, price }}
-        <GoodsPosition {name} {info} {price} />
+      {#each filteredPositions as { name, code, price }}
+        <GoodsPosition {name} {code} {price} />
       {/each}
       <div class="ToPay">
         <button on:click={GoToPay} disabled={$summa === 0}>

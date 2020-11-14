@@ -2,7 +2,7 @@
   import { summa } from "../../goodsStores.js";
   import { finalPositions } from "../../goodsStores.js";
   export let name = "Name";
-  export let info = "Info";
+  export let code = "i did not get an info";
   export let price = 0;
 
   function addition() {
@@ -11,16 +11,16 @@
      * @type {any[]}
      */
     const newPostitions = JSON.parse(JSON.stringify($finalPositions));
-    let index = newPostitions.findIndex((p) => p.info === info);
+    let index = newPostitions.findIndex((p) => p.code === code);
     if (index === -1) {
       console.log("creating");
-      newPostitions.push({ name, info, price, quantity: 1 });
+      newPostitions.push({ name, code, price, quantity: 1 });
     } else {
       console.log("increasing");
       newPostitions[index].quantity += 1;
     }
     finalPositions.set(newPostitions);
-    // console.log({ $finalPositions });
+    console.log({ $finalPositions });
   }
   function deletion() {
     summa.update((n) => n - price);
@@ -28,7 +28,7 @@
      * @type {any[]}
      */
     let newPostitions = JSON.parse(JSON.stringify($finalPositions));
-    let index = newPostitions.findIndex((p) => p.info === info);
+    let index = newPostitions.findIndex((p) => p.code === code);
     if (index === -1) {
     } else if (newPostitions[index].quantity === 1) {
       console.log("deleting");
@@ -41,7 +41,7 @@
   }
 
   $: quantity =
-    ($finalPositions.find((p) => p.info === info) || {}).quantity || 0;
+    ($finalPositions.find((p) => p.code === code) || {}).quantity || 0;
 </script>
 
 <style>
@@ -136,7 +136,7 @@
 <div class="GoodsBox">
   <div class="Info">
     <p class="Name">{name}</p>
-    <p class="Art">Арт. {info}</p>
+    <p class="Art">Арт. {code}</p>
   </div>
 
   <div class="Control">

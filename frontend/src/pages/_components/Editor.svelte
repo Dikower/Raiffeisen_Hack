@@ -12,12 +12,7 @@
   import Modal_window from "./Modal_window.svelte";
   import { onMount } from "svelte";
 
-  let goods = [{'id': '',
-        'emoji': '💡',
-        'name': '',
-        'price': '',
-        'code': '',
-        'tag': ''}];
+  let goods = [{ id: "", emoji: "💡", name: "", price: "", code: "", tag: "" }];
 
   let search_text = "";
   let modal = false;
