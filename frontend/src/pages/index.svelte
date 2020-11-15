@@ -44,7 +44,7 @@
             <div class="que"><h1>Что мы предлагаем?</h1></div>
             <div class="fig">
                 <div id="offer_1"><h1>2</h1><h2>Красивое число</h2></div>
-                <div id="offer_2"><h1>0%</h1><h2>Комиссия за использование</h2></div>
+                <div id="offer_2"><h1>~0%</h1><h2>Комиссия за использование</h2></div>
                 <div id="offer_3"><h1>3</h1><h2>Красивое число</h2></div>
             </div>
             <div class="inf"><h2 id="inf_1">Решение для малого бизнеса, которое</h2><h2 id="inf_2">позволит сократить расходы</h2></div>
@@ -55,8 +55,13 @@
 
 
     <div class="example">
-
+        <h1><nobr>Умная касса</nobr> всегда под рукой</h1>
+        <p>Простой редактор. Умная аналитика. Фокус на UX.</p>
+        <p>Все для максимального повышения эффективности Вашего</p>
+        <p>бизнеса</p>
+        <button on:click={GoToPay}>Получить бесплатно</button>
     </div>
+    <div class="footer"></div>
 </main>
 
 <style>
@@ -206,10 +211,12 @@
     }
     .offer .que h1{
         margin-top: 60px;
-        font-size:40px;
+        font-size:50px;
     }
     .offer .fig h1{
         font-size:80px;
+        font-weight: 800;
+        margin-top: 0px;
         margin-bottom: -30px;
     }
     .offer h2{
@@ -229,8 +236,31 @@
     }
 
     .example{
-        margin-top: 1000px;
-        background-color: indigo;
-        height: 200px;
+        text-align: center;
+        margin-top: 150px;
+    }
+    .example button{
+        height: 75px;
+        border-radius: 100px;
+        border: 0;
+        background-color: black;
+        color: white;
+        font-size: 25px;
+        width: 300px;
+        margin-top: 10px;
+    }
+    .example nobr{
+        color: #ff9e46;
+    }
+    .example h1{
+        font-size: 50px;
+    }
+    .example p{
+        color: gray;
+        font-size: 20px;
+        margin-top: -15px;
+    }
+    .footer{
+        height: 100px;
     }
 </style>
