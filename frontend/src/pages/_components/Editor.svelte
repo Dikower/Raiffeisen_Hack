@@ -6,6 +6,7 @@
     getAllPositions,
     authFetch,
   } from "../_api.js";
+  import { fade } from "svelte/transition"
   import { goto, url } from "@roxi/routify";
   import Card from "./GoodCard.svelte";
   import Search from "./Search.svelte";
@@ -16,6 +17,7 @@
 
   let search_text = "";
   let modal = false;
+  let text_visibility = false;
   let chosen_good;
 
   let personalEditCode = authFetch("users/profile").then(
@@ -26,6 +28,8 @@
     let text = document.getElementsByClassName('hidden_href')[0];
     text.select();
     document.execCommand('copy');
+    text_visibility = true;
+    setTimeout(() => text_visibility = false, 1500)
   }
 
   async function Update_goods(event) {
@@ -78,7 +82,7 @@
 <style>
   h1 {
     text-align: center;
-    margin: 30px;
+    margin: 50px 0 30px 0;
   }
   .component {
     width: 100%;
@@ -94,6 +98,12 @@
   }
   .current_catalog:hover {
     cursor: pointer;
+  }
+  .current_catalog_text {
+    position: absolute;
+    top: 60px;
+    left: 30px;
+    margin: 0;
   }
   .hidden_href {
     position: absolute;
@@ -136,6 +146,9 @@
       <input class="hidden_href" value="{window.location.href.split('editor')[0]}auth/{code}">
     {/await}
   </div>
+  {#if text_visibility}
+  <p class="current_catalog_text" transition:fade>Скопировано!</p>
+    {/if}
   <button
     class="logout"
     on:click={() => {
