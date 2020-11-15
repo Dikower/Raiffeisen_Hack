@@ -2,18 +2,22 @@
   import GoodsPosition from "./_components/GoodsPosition.svelte";
   import { fnTot } from "../_utils";
   import { goto } from "@roxi/routify";
-  import { summa } from "../goodsStores.js";
+  import { finalPositions, summa } from "../goodsStores.js";
   // import { positions } from "../GooodsStores.js";
   import Search from "../_components/Search.svelte";
   import { onMount } from "svelte";
   import { getAllCashierPositions } from "../_api";
+  import { writable } from "svelte/store";
 
   let searchText = "";
 
+  /**
+   * @type {import("svelte/store").Writable<{name:string;code:string;price:number;quantity:number}[]>}
+   */
   let dynamicPositions = null;
 
   onMount(async () => {
-    dynamicPositions = (await getAllCashierPositions()).positions;
+    dynamicPositions = writable((await getAllCashierPositions()).positions);
     // debugger
     console.log("Got dynamicPositions");
   });
@@ -22,12 +26,16 @@
     $goto("../pay");
   }
 
+  function handleReset() {
+    finalPositions.update((old) => old.map((o) => ({ ...o, quantity: 0 })));
+  }
+
   $: filteredPositions =
     dynamicPositions && searchText
-      ? dynamicPositions.filter((p) =>
+      ? $dynamicPositions.filter((p) =>
           p.name.toLowerCase().includes(searchText.toLowerCase())
         )
-      : dynamicPositions;
+      : $dynamicPositions;
 
   $: formattedTotal = fnTot($summa);
 </script>
@@ -121,17 +129,17 @@
       <img src="/images/ShoppingCartGoods.svg" alt="Hehe" />
       <h1>{formattedTotal}</h1>
     </div>
-    <button class="Upd" />
+    <button class="Upd" on:click={handleReset} />
   </div>
   <div class="input-wrapper">
     <Search bind:search_text={searchText} />
   </div>
 
   <div class="Body">
-    {#if dynamicPositions === null}
+    {#if $dynamicPositions === null}
       <!-- content here -->
       loading
-    {:else if Array.isArray(dynamicPositions)}
+    {:else if Array.isArray($dynamicPositions)}
       {#each filteredPositions as { name, code, price }}
         <GoodsPosition {name} {code} {price} />
       {/each}
