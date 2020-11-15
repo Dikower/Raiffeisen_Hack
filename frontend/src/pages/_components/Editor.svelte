@@ -97,6 +97,7 @@
     position: fixed;
     bottom: 10px;
     right: 10px;
+    background-color: #FFFFFF;
   }
   .current_catalog:hover {
     cursor: pointer;
@@ -144,11 +145,31 @@
     cursor: pointer;
   }
   .goods-container {
-    margin: auto;
+    margin: 0 30px;
     display: flex;
     justify-content: left;
     align-items: center;
     flex-wrap: wrap;
+  }
+  @media (max-width: 519px) {
+    .goods-container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .current_catalog {
+      width: 140px;
+      font-size: 12px;
+    }
+    .current_catalog_text {
+      bottom: 88px;
+      right: 10px;
+      background-color: #FFFFFF;
+      padding: 10px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 32px rgba(174, 174, 174, 0.25);
+    }
   }
 </style>
 

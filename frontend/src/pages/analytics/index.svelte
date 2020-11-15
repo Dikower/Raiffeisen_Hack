@@ -9,20 +9,20 @@
   import { authFetch, getLastTransaction } from "../_api";
   import { onMount } from "svelte";
   import { entryCode } from "../goodsStores";
-  import { get } from "svelte/store";
   import WideCard from "../_components/WideCard.svelte";
+  import TransactionCard from "./_components/TransactionCard.svelte";
 
   let lastTransaction;
 
   onMount(async () => {
     // Пока всегда запрашиваем
     // if (!$entryCode) {
-      let personalEditCode = await authFetch("users/profile").then(
-        (r) => r.catalog.entry_code
-      );
+    let personalEditCode = await authFetch("users/profile").then(
+      (r) => r.catalog.entry_code
+    );
 
-      entryCode.set(personalEditCode);
-      localStorage.setItem("entryCode", personalEditCode);
+    entryCode.set(personalEditCode);
+    localStorage.setItem("entryCode", personalEditCode);
     // }
 
     lastTransaction = await getLastTransaction();
@@ -79,7 +79,9 @@
       <InfoBar>lel</InfoBar>
     </div>
     <BottomContainer>
-      <WideCard>{JSON.stringify(lastTransaction)}</WideCard>
+      {#if lastTransaction}
+        <TransactionCard {...lastTransaction} />
+      {/if}
       <InfoCard
         main="Прирост выручки"
         sub="Посмотрите количество прибыли за год"
