@@ -27,7 +27,8 @@
   }
 
   function handleReset() {
-    finalPositions.update((old) => old.map((o) => ({ ...o, quantity: 0 })));
+    finalPositions.update((old) => []);
+    summa.set(0);
   }
 
   $: filteredPositions =
@@ -75,8 +76,11 @@
     margin-top: 20px;
     width: 50px;
     height: 50px;
-    background-image: url(/images/TrashCanGoods.svg);
+    background: transparent url(/images/TrashCanGoods.svg);
     background-size: 100% 100%;
+  }
+  .Upd:hover {
+    cursor: pointer;
   }
   .HeaderSumUpd nobr {
     color: orange;
