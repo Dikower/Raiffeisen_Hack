@@ -1,16 +1,16 @@
 <!-- routify:options index=1 -->
 <script>
   import { goto } from "@roxi/routify";
-  import BottomContainer from "../_components/BottomContainer.svelte";
+  import BottomContainer from "./_components/BottomContainer.svelte";
 
-  import Chart from "./_components/Chart.svelte";
-  import InfoBar from "./_components/InfoBar.svelte";
-  import InfoCard from "./_components/InfoCard.svelte";
-  import { authFetch, getLastTransaction } from "../_api";
+  import Chart from "./analytics/_components/Chart.svelte";
+  import InfoBar from "./analytics/_components/InfoBar.svelte";
+  import InfoCard from "./analytics/_components/InfoCard.svelte";
+  import { authFetch, getLastTransaction } from "./_api";
   import { onMount } from "svelte";
-  import { entryCode } from "../goodsStores";
-  import WideCard from "../_components/WideCard.svelte";
-  import TransactionCard from "./_components/TransactionCard.svelte";
+  import { entryCode } from "./goodsStores";
+  import WideCard from "./_components/WideCard.svelte";
+  import TransactionCard from "./analytics/_components/TransactionCard.svelte";
 
   let lastTransaction;
 
