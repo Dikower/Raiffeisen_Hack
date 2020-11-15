@@ -12,7 +12,7 @@
 <main>
     <div class="head">
         <h1>FetchMasters</h1>
-        <h2><a href="../auth">Вход</a> <nobr>/</nobr> <a href="../auth">Регистрация</a></h2>
+        <h2><a href="../auth/signin">Вход</a> <nobr>/</nobr> <a href="../auth">Регистрация</a></h2>
     </div>
     <div class="idea">
         <div class="text">

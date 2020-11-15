@@ -15,6 +15,7 @@
 
   let goods = [{ id: "", emoji: "💡", name: "", price: "", code: "", tag: "" }];
 
+  let deleted_good = {};
   let search_text = "";
   let modal = false;
   let text_visibility = false;
@@ -67,7 +68,11 @@
       });
     }
   }
-
+  async function DeleteGood(event) {
+    const deleted_ind = event.detail.data;
+    const json_response = await authFetch('positions/'+goods[deleted_ind]['id']+'/delete', "Delete");
+    goods.splice(deleted_ind, 1);
+  }
   onMount(async () => {
     const json_response = await getAllPositions();
     goods = goods.concat(json_response);
@@ -210,10 +215,11 @@
       {#if search_text === '' || (search_text.length <= good['name'].length && good['name'].slice(0, search_text.length) === search_text) || good['ind'] === 0}
         <Card
           {good}
-          on:click={() => {
+          on:delete={DeleteGood}
+          on:update="{() => {
             chosen_good = good;
             modal = true;
-          }} />
+          }}"/>
       {/if}
     {/each}
     {#if modal}
