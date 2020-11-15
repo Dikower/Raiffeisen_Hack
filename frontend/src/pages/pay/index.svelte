@@ -4,16 +4,34 @@
   import Qr from "./_components/QR.svelte";
   import { summa } from "../goodsStores.js";
   import { finalPositions } from "../goodsStores.js";
-  import { onMount } from "svelte";
-  import { getQrCodeSrc } from "../_api";
+  import { onDestroy, onMount } from "svelte";
+  import { getQrCodeSrc, getTransactionStatus } from "../_api";
   import { get } from "svelte/store";
   import { fnTot } from "../_utils";
   import { goto } from "@roxi/routify";
 
-  let qrSrc = "";
+  let qrUrl = "";
+  let qrId;
+  let transactionStatus;
   onMount(async () => {
-    qrSrc = await getQrCodeSrc(get(summa), `Оплата чека на ${get(summa)} рублей`);
+    let qrInfo = await getQrCodeSrc(
+      get(summa),
+      `Оплата чека на ${get(summa)} рублей`
+    );
+    qrUrl = qrInfo.qrUrl;
+    qrId = qrInfo.qrId;
   });
+
+  const interval = setInterval(async () => {
+    if (!qrId) return;
+    console.log("Fetching transaction status");
+    transactionStatus = await getTransactionStatus(qrId);
+  }, 2000);
+
+  onDestroy(() => {
+    clearInterval(interval);
+  });
+
   $: formattedTotal = fnTot($summa);
 </script>
 
@@ -61,7 +79,7 @@
     <h2>Сумма покупки</h2>
     <h1>{formattedTotal}</h1>
 
-    <Qr qrLink={qrSrc} />
+    <Qr qrLink={qrUrl} />
   </div>
   <BottomContainer>
     <div class="Body">

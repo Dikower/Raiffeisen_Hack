@@ -154,9 +154,19 @@ export function getQrCodeSrc(sum, info) {
       info,
       entry_code: get(entryCode),
     }),
-  })
-    .then((res) => res.json())
-    .then((res) => res.qrUrl);
+  }).then((res) => res.json());
+}
+
+
+/**
+ * 
+ * @param {string} qrId 
+ * @returns {Promise<{}>}
+ */
+export function getTransactionStatus(qrId) {
+  return fetch(apiUrl + `transactions${qrId}/payment_info`).then((res) =>
+    res.json()
+  );
 }
 
 /**
