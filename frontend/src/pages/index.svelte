@@ -19,7 +19,7 @@
             <p id="idea_1">FetchMasters app</p>
             <p id="idea_2">Приложение для</p>
             <p id="idea_3">вашего бизнеса</p>
-            <p id="idea_4">Система быстрых переводов для <br/>индивидуальных предпренемателей</p>
+            <p id="idea_4">Система быстрых переводов для <br/>индивидуальных предпринимателей</p>
             <button on:click={GoToPay}>Получить бесплатно</button>
         </div>
         <img src="/images/MainIdeaImg.svg" alt="img">
