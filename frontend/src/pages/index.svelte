@@ -1,7 +1,11 @@
 <script>
-    import { metatags } from '@roxi/routify'
-    metatags.title = 'My Routify app'
-    metatags.description = 'Description coming soon...'
+    import { metatags } from '@roxi/routify';
+    import { goto } from "@roxi/routify";
+    metatags.title = 'My Routify app';
+    metatags.description = 'Description coming soon...';
+    function GoToPay() {
+        $goto("../pay");
+    }
 </script>
 
 
@@ -15,7 +19,8 @@
             <p id="idea_1">FetchMasters app</p>
             <p id="idea_2">Приложение для</p>
             <p id="idea_3">вашего бизнеса</p>
-            <p id="idea_4">Система быстрых переводов для индивидуальных предпренемателей</p>
+            <p id="idea_4">Система быстрых переводов для <br/>индивидуальных предпренемателей</p>
+            <button on:click={GoToPay}>Получить бесплатно</button>
         </div>
         <img src="/images/MainIdeaImg.svg" alt="img">
     </div>
@@ -31,6 +36,10 @@
 </main>
 
 <style>
+    main{
+        max-width: 1440px;
+        margin:auto;
+    }
     div{
         width: 100%;
     }
@@ -62,11 +71,11 @@
     } 
     
     .idea{
+        margin-top: 10px;
         display: flex;
-        height: 500px;
     }
     .idea p{
-        margin-left: 15px;
+        margin-left: 15%;
     }
     .idea img{
         height: 500px;
@@ -74,24 +83,53 @@
     .idea #idea_1{
         color: #ff9e46;
         font-weight: 700;
-        font-size: 40px;
+        font-size: 40px; 
+        margin-top: 80px;
     }
     .idea #idea_2{
-        font-weight: 500;
+        font-weight: 600;
         margin-top: -50px;
         font-size: 80px;
     }
     .idea #idea_3{
-        font-weight: 500;
-        margin-top: -100px;
+        font-weight: 600;
+        margin-top: -110px;
         font-size: 80px;
     }
     .idea #idea_4{
-        margin-top: -60px;
+        margin-top: -80px;
         font-weight: 600;
         font-size: 25px;
         color: gray;
     }
+    .idea button{
+        height: 75px;
+        border-radius: 100px;
+        background-color: black;
+        color: white;
+        font-size: 25px;
+        width: 300px;
+        margin-left: 20%;
+        margin-top: 10px;
+    }
+    @media screen and (max-width: 1200px) {
+        .idea{
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+        .idea img{
+            width: 100%;
+        }
+        .idea p{
+            margin-left: 5%;
+        }
+        .idea button{
+            margin-left: 10%;
+        }
+    } 
+
 
     .problem{
         background-color:hotpink;
