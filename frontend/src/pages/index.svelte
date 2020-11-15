@@ -12,7 +12,7 @@
 <main>
     <div class="head">
         <h1>FetchMasters</h1>
-        <h2>Вход <nobr>/</nobr> Регистрация</h2>
+        <h2><a href="../auth">Вход</a> <nobr>/</nobr> <a href="../auth">Регистрация</a></h2>
     </div>
     <div class="idea">
         <div class="text">
@@ -76,6 +76,9 @@
         display: flex;
         justify-content: space-between;
     }
+    .head a{
+        color: black;
+    }
     .head h1{
         margin-top: 10px;
         margin-left: 15px;
@@ -100,7 +103,7 @@
     } 
     
     .idea{
-        margin-top: 10px;
+        margin-top: 10vh;
         display: flex;
         height: 100vh;
     }
@@ -160,6 +163,41 @@
             margin-left: 10%;
         }
     } 
+    @media screen and (max-width: 700px) {
+        .idea #idea_1{
+            color: #ff9e46;
+            font-weight: 700;
+            font-size: 30px; 
+            margin-top: 80px;
+        }
+        .idea #idea_2{
+            font-weight: 600;
+            margin-top: -40px;
+            font-size: 60px;
+        }
+        .idea #idea_3{
+            font-weight: 600;
+            margin-top: -80px;
+            font-size: 60px;
+        }
+        .idea #idea_4{
+            margin-top: -60px;
+            font-weight: 600;
+            font-size: 20px;
+            color: gray;
+        }
+    }
+  
+
+
+
+
+
+
+
+
+
+
 
 
     .problemsolution{
@@ -186,10 +224,10 @@
     }
     @media screen and (max-width: 900px) {
         .problemsolution{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
     } 
 
     .offer{
@@ -201,6 +239,17 @@
         background-image: url("/images/BackImgInd.svg");
         background-size: 100% 100%;
     }
+    @media screen and (max-width: 900px) {
+        .offer{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin-top: -100px;
+            color: white;
+            background-image: url("/images/BackImgInd.svg");
+            background-size: 100% 100%;
+        }
+    } 
     .offer .bigfield{
         background-color: #ff9e46;
         background-image: url("/images/MaskGroup.svg");
@@ -239,6 +288,12 @@
         text-align: center;
         margin-top: 150px;
     }
+    @media screen and (max-width: 900px) {
+        .example{
+            text-align: center;
+            margin-top: -100px;
+        }
+    } 
     .example button{
         height: 75px;
         border-radius: 100px;
