@@ -4,7 +4,7 @@
     metatags.title = 'My Routify app';
     metatags.description = 'Description coming soon...';
     function GoToPay() {
-        $goto("../pay");
+        $goto("../auth");
     }
 </script>
 
@@ -39,8 +39,21 @@
         </div>
     </div>
     <div class="offer">
-
+        <div class="field"></div>
+        <div class="bigfield">
+            <div class="que"><h1>Что мы предлагаем?</h1></div>
+            <div class="fig">
+                <div id="offer_1"><h1>2</h1><h2>Красивое число</h2></div>
+                <div id="offer_2"><h1>0%</h1><h2>Комиссия за использование</h2></div>
+                <div id="offer_3"><h1>3</h1><h2>Красивое число</h2></div>
+            </div>
+            <div class="inf"><h2 id="inf_1">Решение для малого бизнеса, которое</h2><h2 id="inf_2">позволит сократить расходы</h2></div>
+        </div>
+        <div class="field"></div>
     </div>
+
+
+
     <div class="example">
 
     </div>
@@ -84,6 +97,7 @@
     .idea{
         margin-top: 10px;
         display: flex;
+        height: 100vh;
     }
     .idea p{
         margin-left: 15%;
@@ -129,6 +143,7 @@
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
+            height: 100%;
         }
         .idea img{
             width: 100%;
@@ -143,7 +158,6 @@
 
 
     .problemsolution{
-        margin-top: 100px;
         display: flex;
         justify-content: space-between;
     }
@@ -167,7 +181,6 @@
     }
     @media screen and (max-width: 900px) {
         .problemsolution{
-        margin-top: 100px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -175,10 +188,48 @@
     } 
 
     .offer{
-        background-color: indianred;
-        height: 200px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 200px;
+        color: white;
+        background-image: url("/images/BackImgInd.svg");
+        background-size: 100% 100%;
     }
+    .offer .bigfield{
+        background-color: #ff9e46;
+        background-image: url("/images/MaskGroup.svg");
+        border-radius: 30px;
+    }
+    .offer .fig{
+        display: flex;
+    }
+    .offer .que h1{
+        margin-top: 60px;
+        font-size:40px;
+    }
+    .offer .fig h1{
+        font-size:80px;
+        margin-bottom: -30px;
+    }
+    .offer h2{
+        
+    }
+    
+    .offer .inf #inf_1{
+        margin-top: 40px;
+    }
+    .offer .inf #inf_2{
+        margin-top: -15px;
+        margin-bottom: 40px;
+    }
+    .offer .field{
+        height: 200px;
+
+    }
+
     .example{
+        margin-top: 1000px;
         background-color: indigo;
         height: 200px;
     }
