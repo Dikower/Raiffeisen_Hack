@@ -126,7 +126,7 @@ export function getData(url) {
 /**
  *
  * @param {string} path без "/" в начале
- * @param {"POST" | "GET" | "PUT" | "DELETE"} method
+ * @param {string} method
  * @param {any?} body
  */
 export async function authFetch(path, method = "GET", body = undefined) {
