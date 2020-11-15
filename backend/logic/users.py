@@ -17,7 +17,7 @@ pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/users/token")
 
 PublicUser = pydantic_model_creator(User, name='PublicUser')
-PrivateUser = pydantic_model_creator(User, name='PrivateUser')
+PrivateUser = pydantic_model_creator(User, name='PrivateUser', exclude=('catalog.history', ))
 
 
 class NewUser(BaseModel):

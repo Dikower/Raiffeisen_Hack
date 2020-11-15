@@ -52,8 +52,19 @@ async def get_qr(transaction: Transaction = Body(...)):
             "currency": "RUB",
             "order": randint(0, 99999999999),
             "paymentDetails": "Оплата товаров",
-            "qrType": "QRDynamic",
+            "qrType": "QRStatic",
             "sbpMerchantId": secrets['MerchantId']
         }
     )
     return Wrapper(**reg_res.json())
+
+
+@router.get('{qrId}/payment_info')
+async def get_info(qrId: str):
+    info_res = httpx.get(
+        apiUrl + f'api/sbp/v1/qr/{qrId}/payment-info -H "Authorization :Bearer {secrets["key"]}',
+    )
+    info_res = info_res.json()
+    if info_res.get('path'):
+        del info_res['path']
+    return info_res
