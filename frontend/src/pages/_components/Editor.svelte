@@ -22,6 +22,12 @@
     (r) => r.catalog.entry_code
   );
 
+  function Copy() {
+    let text = document.getElementsByClassName('hidden_href')[0];
+    text.select();
+    document.execCommand('copy');
+  }
+
   async function Update_goods(event) {
     let obj = event.detail.data;
     if (obj["ind"] === 0) {
@@ -79,6 +85,15 @@
     height: 100%;
     font-family: "Nunito", sans-serif;
   }
+  .current_catalog {
+
+  }
+  .current_catalog:hover {
+    cursor: pointer;
+  }
+  .hidden_href {
+    opacity: 0;
+  }
   .logout {
     position: absolute;
     top: 5px;
@@ -105,13 +120,14 @@
   href="https://fonts.googleapis.com/css2?family=Nunito:ital@1&display=swap"
   rel="stylesheet" />
 <div class="component">
-  <div>
+  <div class='current_catalog' on:click={Copy}>
     Номер Вашего каталога
     {#await personalEditCode}
       <!-- promise is pending -->
     {:then code}
       <!-- promise was fulfilled -->
       {code}
+      <input class="hidden_href" value="{window.location.href.split('editor')[0]}auth/{code}">
     {/await}
   </div>
   <button
