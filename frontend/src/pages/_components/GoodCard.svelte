@@ -1,13 +1,15 @@
 <script>
-  import { fly, fade } from 'svelte/transition';
-  import { createEventDispatcher } from "svelte";
+  import {fly, fade} from 'svelte/transition';
+  import {createEventDispatcher} from "svelte";
+
   const dispatch = createEventDispatcher();
   let deleted_card;
   export let thumbnail =
-    "https://cdn.shopify.com/s/files/1/2848/4722/products/30f454700daacf066bd7cb2b476eab58_600x.jpg?v=1519595291";
+      "https://cdn.shopify.com/s/files/1/2848/4722/products/30f454700daacf066bd7cb2b476eab58_600x.jpg?v=1519595291";
   export let good;
   let chosen_good;
   let modal;
+
   function handleClick() {
     dispatch('update');
   }
@@ -26,34 +28,42 @@
     cursor: pointer;
     margin: 30px;
   }
+
   .close_block {
     z-index: 20;
   }
+
   .click_block {
     z-index: 0;
   }
+
   .close {
-        position: absolute;
-        top: 10px;
-        right: 12px;
-        width: 12px;
-    }
-    .close:hover {
-        cursor: pointer;
-    }
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 12px;
+  }
+
+  .close:hover {
+    cursor: pointer;
+  }
+
   .new_good_svg {
     height: 60px;
     width: 60px;
     margin: 55px;
   }
+
   .emoji_box {
     font-size: 55px;
     margin: 10px;
   }
+
   .title {
     font-size: 20px;
     line-height: 30px;
   }
+
   .price {
     color: #ff9e46;
     font-size: 18px;
@@ -62,21 +72,21 @@
 <svelte:head>
   <meta charset="UTF-8">
 </svelte:head>
-  <div class="good-card" transition:fade>
-    {#if good['ind'] !== 0}
-  <div class="close_block" on:click="{() => {console.log(good['ind']); dispatch('delete', {'data': good['ind']})}}">
-  <img src="/images/cross.svg" class="close">
-  </div>
-    {/if}
-    <div class="click_block" on:click={handleClick}>
-  {#if good['ind'] === 0}
-    <img src="/images/plus.svg" class="new_good_svg" alt="new_good">
-    {:else}
-    <p class="emoji_box">{good['emoji']}</p>
-  <div class="info">
-    <div class="title">{good['name']}</div>
-    <div class="price">{good['price']}₽</div>
-  </div>
+<div class="good-card" transition:fade>
+  {#if good['ind'] !== 0}
+    <div class="close_block" on:click="{() => {console.log(good['ind']); dispatch('delete', {'data': good['ind']})}}">
+      <img src="/images/cross.svg" class="close">
+    </div>
   {/if}
-</div>
+  <div class="click_block" on:click={handleClick}>
+    {#if good['ind'] === 0}
+      <img src="/images/plus.svg" class="new_good_svg" alt="new_good">
+    {:else}
+      <p class="emoji_box">{good['emoji']}</p>
+      <div class="info">
+        <div class="title">{good['name']}</div>
+        <div class="price">{good['price']}₽</div>
+      </div>
+    {/if}
+  </div>
 </div>

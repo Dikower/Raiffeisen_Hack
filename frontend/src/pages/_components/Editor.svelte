@@ -73,7 +73,9 @@
     const deleted_ind = event.detail.data;
     const json_response = await authFetch('positions/'+goods[deleted_ind]['id']+'/delete', "Delete");
     goods.splice(deleted_ind, 1);
+    goods = goods;
   }
+
   onMount(async () => {
     const json_response = await getAllPositions();
     goods = goods.concat(json_response);

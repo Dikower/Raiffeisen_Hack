@@ -69,16 +69,20 @@
         max-width: 1440px;
         margin:auto;
     }
+
     div{
         width: 100%;
     }
+
     .head{   
         display: flex;
         justify-content: space-between;
     }
+
     .head a{
         color: black;
     }
+
     .head h1{
         margin-top: 10px;
         margin-left: 15px;
