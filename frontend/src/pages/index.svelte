@@ -24,10 +24,21 @@
         </div>
         <img src="/images/MainIdeaImg.svg" alt="img">
     </div>
-    <div class="problem">
-
+    <div class="problemsolution">
+        <div class="problem">
+            <h1>Проблемы</h1>
+            <p>Большие комиссии с платежей</p>
+            <p>Потеря аудитории без наличности</p>
+            <p>Отсутствие информации о продажах</p>
+        </div>
+        <div class="solution">
+            <h1>Решения</h1>
+            <p>Минимальная комиссия от СБП</p>
+            <p>Возможность оплаты через смартфон</p>
+            <p>Мониторинг и аналитика транзакций</p>
+        </div>
     </div>
-    <div class="solution">
+    <div class="offer">
 
     </div>
     <div class="example">
@@ -131,11 +142,39 @@
     } 
 
 
-    .problem{
-        background-color:hotpink;
-        height: 200px;
+    .problemsolution{
+        margin-top: 100px;
+        display: flex;
+        justify-content: space-between;
     }
-    .solution{
+    .problemsolution .solution{
+        text-align: right;
+        margin-right: 8%;
+    }
+    .problemsolution .problem{
+        margin-left: 8%;
+    }
+    .problemsolution h1{
+        color: #ff9e46;
+        font-size: 50px;
+        font-weight: 600;
+    }
+    .problemsolution p{
+        font-size: 20px;
+        margin-top: -15px;
+        font-weight: 600;
+        color: gray;
+    }
+    @media screen and (max-width: 900px) {
+        .problemsolution{
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    } 
+
+    .offer{
         background-color: indianred;
         height: 200px;
     }
