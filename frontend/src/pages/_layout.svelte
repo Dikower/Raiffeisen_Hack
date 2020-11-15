@@ -1,11 +1,10 @@
-<!-- routify:options preload="proximity" -->
 <script>
     import { TabsTransition } from "@roxi/routify/decorators";
     import { writable } from 'svelte/store'
     let width = writable();
 </script>
 <div class="window" bind:offsetWidth={$width}>
-<slot decorator={TabsTransition}/>
+<slot decorator={TabsTransition} scoped={{width}}/>
 </div>
 <style>
     .window {

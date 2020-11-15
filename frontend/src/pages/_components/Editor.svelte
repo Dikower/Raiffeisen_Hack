@@ -82,7 +82,6 @@
 <style>
   h1 {
     text-align: center;
-    margin: 50px 0 30px 0;
   }
   .component {
     width: 100%;
@@ -104,6 +103,7 @@
     top: 60px;
     left: 30px;
     margin: 0;
+    font-size: 12px;
   }
   .hidden_href {
     position: absolute;
@@ -120,6 +120,21 @@
     font-weight: bold;
   }
   .logout:hover {
+    cursor: pointer;
+  }
+  .title_block {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 30px 0;
+  }
+  .arrow {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+  }
+  .arrow:hover {
     cursor: pointer;
   }
   .goods-container {
@@ -155,7 +170,13 @@
       deleteCookie('access_token');
       $goto($url('../auth/signup'), {}, false);
     }}>Выйти</button>
+  <div class="title_block">
   <h1>Редактор</h1>
+    <svg class="arrow" on:click={() => $goto('../analytics')}>
+    <line x1="0" y1="30" x2="15" y2="15" stroke="#FF9E46" stroke-width="2"></line>
+    <line x1="0" y1="0" x2="15" y2="15" stroke="#FF9E46" stroke-width="2" stroke-linecap="round"></line>
+  </svg>
+  </div>
   <Search bind:search_text />
   <div class="goods-container">
     {#each goods as good}

@@ -1,9 +1,10 @@
+<!-- routify:options index=1 -->
 <script>
-  import BottomContainer from "../_components/BottomContainer.svelte";
+  import BottomContainer from "./_components/BottomContainer.svelte";
 
-  import Chart from "./_components/Chart.svelte";
-  import InfoBar from "./_components/InfoBar.svelte";
-  import InfoCard from "./_components/InfoCard.svelte";
+  import Chart from "./analytics/_components/Chart.svelte";
+  import InfoBar from "./analytics/_components/InfoBar.svelte";
+  import InfoCard from "./analytics/_components/InfoCard.svelte";
 
   //   import bg from "../../../assets/images/anal-bg.svg";
 </script>
@@ -21,7 +22,6 @@
   }
 </style>
 
-<!-- routify:options index=3 -->
 <div class="anal">
   <div>
     <Chart />
