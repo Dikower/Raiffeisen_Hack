@@ -26,7 +26,7 @@
 <style>
   .chart {
     height: 60vh;
-    padding: 3em 2em 2em 2em;
+    padding: 5em 2em 2em 2em;
     /* width: 70vw; */
     margin: auto;
     overflow: hidden;

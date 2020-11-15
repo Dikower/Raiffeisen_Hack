@@ -1,5 +1,6 @@
 <!-- routify:options index=1 -->
 <script>
+  import { goto } from "@roxi/routify";
   import BottomContainer from "./_components/BottomContainer.svelte";
 
   import Chart from "./analytics/_components/Chart.svelte";
@@ -20,9 +21,23 @@
     margin: auto;
     max-width: 900px;
   }
+  .arrow {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    width: 30px;
+    height: 30px;
+  }
+  .arrow:hover {
+    cursor: pointer;
+  }
 </style>
 
 <div class="anal">
+  <svg class="arrow" on:click={() => $goto('../editor')}>
+    <line x1="0" y1="15" x2="15" y2="30" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></line>
+    <line x1="0" y1="15" x2="15" y2="0" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></line>
+  </svg>
   <div>
     <Chart />
     <div style="text-align: center;margin-bottom: 17px;">
