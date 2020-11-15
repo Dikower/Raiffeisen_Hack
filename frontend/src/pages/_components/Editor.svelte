@@ -93,15 +93,18 @@
     width: 200px;
     border-radius: 20px;
     padding: 10px 20px;
-    margin: 10px;
+    font-size: 16px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
   }
   .current_catalog:hover {
     cursor: pointer;
   }
   .current_catalog_text {
-    position: absolute;
-    top: 60px;
-    left: 30px;
+    position: fixed;
+    bottom: 80px;
+    right: 113px;
     margin: 0;
     font-size: 12px;
   }
@@ -109,15 +112,18 @@
     position: absolute;
     top: -50px;
     opacity: 0;
+    width: 20px;
   }
   .logout {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
     background: transparent;
     border: 0;
-    font-weight: bold;
+    padding: 10px 20px;
+    box-shadow: 0 0 32px rgba(174, 174, 174, 0.25);
+
   }
   .logout:hover {
     cursor: pointer;
@@ -127,7 +133,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 0 30px 0;
+    margin: 50px 0 30px 0;
   }
   .arrow {
     width: 30px;
@@ -152,7 +158,7 @@
   rel="stylesheet" />
 <div class="component">
   <div class='current_catalog' on:click={Copy}>
-    Ваш каталог
+    Cкопировать ссылку на каталог
     {#await personalEditCode}
       <!-- promise is pending -->
     {:then code}

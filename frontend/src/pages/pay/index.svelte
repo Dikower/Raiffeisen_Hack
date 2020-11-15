@@ -12,7 +12,7 @@
 
   let qrSrc = "";
   onMount(async () => {
-    qrSrc = await getQrCodeSrc(get(summa), "HUI");
+    qrSrc = await getQrCodeSrc(get(summa), `Оплата чека на ${get(summa)} рублей`);
   });
   $: formattedTotal = fnTot($summa);
 </script>
