@@ -54,7 +54,6 @@
       });
       goods[goods.length - 1]["id"] = json_response["id"];
     } else {
-      console.log(obj);
       goods[obj["ind"]]["emoji"] = obj["emoji"];
       goods[obj["ind"]]["name"] = obj["name"];
       goods[obj["ind"]]["price"] = obj["price"];
