@@ -178,3 +178,15 @@ export function getAllCashierPositions() {
     }),
   }).then((res) => res.json());
 }
+
+/**
+ * @returns {Promise<{id:number;time:string;info:string}>}
+ */
+export function getLastTransaction() {
+  return fetch(apiUrl + `history/${get(entryCode)}/last`, {
+    method: "GET",
+    headers: new Headers({
+      Accept: "application/json",
+    }),
+  }).then((res) => res.json());
+}

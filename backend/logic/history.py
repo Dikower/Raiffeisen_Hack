@@ -3,7 +3,7 @@ from models import History, Catalog
 from typing import List
 from tortoise.contrib.pydantic import pydantic_model_creator
 router = APIRouter()
-View = pydantic_model_creator(History)
+View = pydantic_model_creator(History, exclude=('catalog', ))
 
 
 @router.get('/', response_model=List[View])

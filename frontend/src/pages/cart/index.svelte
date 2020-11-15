@@ -19,7 +19,7 @@
 <div><input type="text" /></div>
 <div>
   <div>drinks</div>
-  <div>huinks</div>
+  <div>burgers</div>
   <div>salads</div>
   <div>...</div>
 </div>
