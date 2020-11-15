@@ -8,6 +8,7 @@
   import { getQrCodeSrc } from "../_api";
   import { get } from "svelte/store";
   import { fnTot } from "../_utils";
+  import { goto } from "@roxi/routify";
 
   let qrSrc = "";
   onMount(async () => {
@@ -17,6 +18,16 @@
 </script>
 
 <style>
+  .nav-back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 0.5em;
+    cursor: pointer;
+  }
+  .nav-back img {
+    display: block;
+  }
   .pay {
     background-color: #ff9e46;
     background-image: url("/images/anal-bg.svg");
@@ -42,6 +53,10 @@
 
 <!-- routify:options index=3 -->
 <div class="pay">
+  <div class="nav-back" on:click={() => $goto('/goods')}>
+    <img src="/images/arrow-left.svg" alt="Назад" />
+  </div>
+
   <div class="pay-info">
     <h2>Сумма покупки</h2>
     <h1>{formattedTotal}</h1>
