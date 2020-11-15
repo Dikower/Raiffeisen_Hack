@@ -70,10 +70,11 @@
     }
   }
   async function DeleteGood(event) {
-    const deleted_ind = event.detail.data;
-    const json_response = await authFetch('positions/'+goods[deleted_ind]['id']+'/delete', "Delete");
-    goods.splice(deleted_ind, 1);
-    goods = goods;
+    const deleted = event.detail.data;
+    const json_response = await authFetch('positions/'+deleted['id']+'/delete', "Delete");
+    // goods.splice(deleted_ind, 1);
+    // goods = goods;
+    goods = goods.filter(item => item !== deleted)
   }
 
   onMount(async () => {

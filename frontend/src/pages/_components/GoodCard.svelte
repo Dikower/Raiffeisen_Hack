@@ -74,7 +74,7 @@
 </svelte:head>
 <div class="good-card" transition:fade>
   {#if good['ind'] !== 0}
-    <div class="close_block" on:click="{() => {console.log(good['ind']); dispatch('delete', {'data': good['ind']})}}">
+    <div class="close_block" on:click="{() => {console.log(good['ind']); dispatch('delete', {'data': good})}}">
       <img src="/images/cross.svg" class="close">
     </div>
   {/if}
