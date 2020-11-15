@@ -86,12 +86,18 @@
     font-family: "Nunito", sans-serif;
   }
   .current_catalog {
-
+    box-shadow: 0 0 32px rgba(174, 174, 174, 0.25);
+    width: 200px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 10px;
   }
   .current_catalog:hover {
     cursor: pointer;
   }
   .hidden_href {
+    position: absolute;
+    top: -50px;
     opacity: 0;
   }
   .logout {
@@ -121,7 +127,7 @@
   rel="stylesheet" />
 <div class="component">
   <div class='current_catalog' on:click={Copy}>
-    Номер Вашего каталога
+    Ваш каталог
     {#await personalEditCode}
       <!-- promise is pending -->
     {:then code}
